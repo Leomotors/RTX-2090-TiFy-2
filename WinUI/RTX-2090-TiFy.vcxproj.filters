@@ -139,12 +139,16 @@
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="PropertySheet.props" />
+    <None Include="opencv_world455d.dll" />
+    <None Include="opencv_world455.dll" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="readme.txt" />
+    <Text Include="LICENSE.g.txt" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="MainPage.xaml" />
+    <Page Include="Styles.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Assets">

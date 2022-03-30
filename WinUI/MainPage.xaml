@@ -38,21 +38,42 @@
             </StackPanel>
         </Border>
 
+        <!--  Menu Bar  -->
         <muxc:MenuBar Margin="10,0">
             <muxc:MenuBarItem Title="Menu">
-                <MenuFlyoutItem>Hello</MenuFlyoutItem>
-                <MenuFlyoutItem>World</MenuFlyoutItem>
+                <MenuFlyoutItem Click="License_Click">View License</MenuFlyoutItem>
+                <MenuFlyoutItem Click="VisitSite_Click">Visit Project Site</MenuFlyoutItem>
+                <MenuFlyoutItem Click="About_Click">About</MenuFlyoutItem>
             </muxc:MenuBarItem>
         </muxc:MenuBar>
 
-        <StackPanel Padding="30">
-            <TextBlock
-                FontSize="32"
-                FontWeight="SemiBold"
-                TextAlignment="Center">
-                Welcome to RTX-2090-Ti
-            </TextBlock>
-        </StackPanel>
+        <!--  App Content  -->
+        <ScrollViewer>
+            <StackPanel Padding="30">
+                <TextBlock
+                    FontSize="32"
+                    FontWeight="SemiBold"
+                    TextAlignment="Center">
+                    Welcome to RTX-2090-Ti
+                </TextBlock>
+
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Style="{StaticResource Header2}">Input Image</TextBlock>
+                        <Button Click="SelectInput_Click" FontSize="16">Select Input Image</Button>
+                        <Image
+                            x:Name="InputImage"
+                            Width="300"
+                            Height="300" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock x:Name="OutputText" Style="{StaticResource Header2}">Output Path:</TextBlock>
+                        <Button Click="SelectOutput_Click" FontSize="16">Select Output Path</Button>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
 
     </StackPanel>
 </Page>

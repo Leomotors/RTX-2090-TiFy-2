@@ -2,12 +2,12 @@
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
   <Identity
     Name="66f08c15-baf8-44b9-8257-d178b9b2dd39"
-    Publisher="CN=npong"
-    Version="1.0.0.0" />
+    Publisher="CN=Leomotors"
+    Version="1.0.1.0" />
   <mp:PhoneIdentity PhoneProductId="66f08c15-baf8-44b9-8257-d178b9b2dd39" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
   <Properties>
     <DisplayName>RTX-2090-TiFy</DisplayName>
-    <PublisherDisplayName>npong</PublisherDisplayName>
+    <PublisherDisplayName>Leomotors</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
   <Dependencies>
@@ -26,7 +26,4 @@
       </uap:VisualElements>
     </Application>
   </Applications>
-  <Capabilities>
-    <Capability Name="internetClient" />
-  </Capabilities>
 </Package>

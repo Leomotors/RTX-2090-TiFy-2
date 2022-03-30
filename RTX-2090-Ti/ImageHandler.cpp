@@ -2,7 +2,7 @@
 #include "ImageHandler.hpp"
 
 #include <string>
-#include <opencv2/opencv.hpp>
+#include <Macros/opencv.hpp>
 
 namespace RTXLib {
 

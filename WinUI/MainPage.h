@@ -8,6 +8,21 @@ struct MainPage : MainPageT<MainPage> {
 
     int32_t MyProperty();
     void MyProperty(int32_t value);
+    Windows::Foundation::IAsyncAction SelectInput_Click(
+        winrt::Windows::Foundation::IInspectable const& sender,
+        winrt::Windows::UI::Xaml::RoutedEventArgs const& e);
+    Windows::Foundation::IAsyncAction SelectOutput_Click(
+        winrt::Windows::Foundation::IInspectable const& sender,
+        winrt::Windows::UI::Xaml::RoutedEventArgs const& e);
+    Windows::Foundation::IAsyncAction License_Click(
+        winrt::Windows::Foundation::IInspectable const& sender,
+        winrt::Windows::UI::Xaml::RoutedEventArgs const& e);
+    Windows::Foundation::IAsyncAction VisitSite_Click(
+        winrt::Windows::Foundation::IInspectable const& sender,
+        winrt::Windows::UI::Xaml::RoutedEventArgs const& e);
+    Windows::Foundation::IAsyncAction About_Click(
+        winrt::Windows::Foundation::IInspectable const& sender,
+        winrt::Windows::UI::Xaml::RoutedEventArgs const& e);
 };
 }  // namespace winrt::RTX_2090_TiFy::implementation
 

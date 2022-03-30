@@ -21,5 +21,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)GPUConfig.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)ImageHandler.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)IProgressBar.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Macros\opencv.hpp" />
   </ItemGroup>
 </Project>

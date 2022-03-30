@@ -2,7 +2,6 @@
 #include "GPUConfig.hpp"
 
 #include <string>
-#include <format>
 #include <utility>
 #include <vector>
 #include <sstream>
