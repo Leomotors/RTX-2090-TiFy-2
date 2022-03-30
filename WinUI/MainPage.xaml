@@ -1,0 +1,58 @@
+﻿<Page
+    x:Class="RTX_2090_TiFy.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:RTX_2090_TiFy"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    muxc:BackdropMaterial.ApplyToRootOrPageBackground="True"
+    mc:Ignorable="d">
+
+    <StackPanel Orientation="Vertical">
+
+        <Border
+            x:Name="AppTitleBar"
+            Height="40"
+            Margin="24,8,0,0"
+            VerticalAlignment="Top"
+            Background="Transparent"
+            Canvas.ZIndex="1"
+            IsHitTestVisible="True">
+            <StackPanel Orientation="Horizontal">
+                <Image
+                    x:Name="AppFontIcon"
+                    Width="32"
+                    Height="32"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Source="Assets/Square44x44Logo.png" />
+                <TextBlock
+                    x:Name="AppTitle"
+                    Margin="12,0,0,0"
+                    VerticalAlignment="Center"
+                    FontSize="16"
+                    FontWeight="SemiBold"
+                    Style="{StaticResource CaptionTextBlockStyle}"
+                    Text="RTX 2090 TiFy" />
+            </StackPanel>
+        </Border>
+
+        <muxc:MenuBar Margin="10,0">
+            <muxc:MenuBarItem Title="Menu">
+                <MenuFlyoutItem>Hello</MenuFlyoutItem>
+                <MenuFlyoutItem>World</MenuFlyoutItem>
+            </muxc:MenuBarItem>
+        </muxc:MenuBar>
+
+        <StackPanel Padding="30">
+            <TextBlock
+                FontSize="32"
+                FontWeight="SemiBold"
+                TextAlignment="Center">
+                Welcome to RTX-2090-Ti
+            </TextBlock>
+        </StackPanel>
+
+    </StackPanel>
+</Page>
