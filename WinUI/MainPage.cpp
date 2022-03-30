@@ -33,8 +33,6 @@ MainPage::MainPage() {
 
 int32_t MainPage::MyProperty() { throw hresult_not_implemented(); }
 
-void MainPage::MyProperty(int32_t) {
-    throw hresult_not_implemented();
-}
+void MainPage::MyProperty(int32_t) { throw hresult_not_implemented(); }
 
 }  // namespace winrt::RTX_2090_TiFy::implementation

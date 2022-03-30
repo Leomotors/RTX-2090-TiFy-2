@@ -14,9 +14,12 @@
     <ProjectCapability Include="SourceItemsFromImports" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="$(MSBuildThisFileDirectory)RayTracing.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)GPUConfig.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)ImageHandler.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="$(MSBuildThisFileDirectory)RayTracing.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)GPUConfig.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)ImageHandler.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)IProgressBar.hpp" />
   </ItemGroup>
 </Project>
