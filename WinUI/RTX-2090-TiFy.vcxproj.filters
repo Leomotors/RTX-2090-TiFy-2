@@ -5,10 +5,18 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
-    <ClCompile Include="$(GeneratedFilesDir)module.g.cpp" />
+    <ClCompile Include="$(GeneratedFilesDir)module.g.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="AppState.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
+    <ClInclude Include="AppState.hpp">
+      <Filter>Classes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\LockScreenLogo.scale-200.png" />
@@ -139,20 +147,50 @@
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="PropertySheet.props" />
-    <None Include="opencv_world455d.dll" />
-    <None Include="opencv_world455.dll" />
+    <None Include="opencv_world455.dll">
+      <Filter>dll</Filter>
+    </None>
+    <None Include="opencv_world455d.dll">
+      <Filter>dll</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Text Include="readme.txt" />
-    <Text Include="LICENSE.g.txt" />
+    <Text Include="LICENSE.g.txt">
+      <Filter>generated</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="MainPage.xaml" />
     <Page Include="Styles.xaml" />
+    <Page Include="HomePage.xaml">
+      <Filter>Views</Filter>
+    </Page>
+    <Page Include="MainPage.xaml" />
+    <Page Include="Settings.xaml">
+      <Filter>Views</Filter>
+    </Page>
+    <Page Include="ExternalLink.xaml">
+      <Filter>Controls</Filter>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Assets">
       <UniqueIdentifier>{d1bbeead-ba69-4fa2-8773-eb18f7e2e78a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Views">
+      <UniqueIdentifier>{ad6fcc02-b5aa-46fe-a7b2-6c9e5ac5f9ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Controls">
+      <UniqueIdentifier>{c5600c22-651a-4c0c-8e71-26724e404484}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dll">
+      <UniqueIdentifier>{88e3a0da-ca70-497c-8721-37fdd97f210b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="generated">
+      <UniqueIdentifier>{ba00490d-c905-4e4c-b456-ec7832d16cc3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes">
+      <UniqueIdentifier>{c7644487-8416-4e62-a352-94a3bfe3f8af}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -64,5 +64,7 @@
 
 *.cpp text eol=lf
 *.hpp text eol=lf
+*.idl text eol=lf
+pch.h text eol=lf
 
 pch.h linguist-language=C++

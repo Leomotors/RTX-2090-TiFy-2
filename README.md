@@ -8,7 +8,7 @@ _work in progress_
 ## Project Structure
 
 - RTX-2090-Ti -> Core Structure of App
-- RTXTest -> Test for RTX-2090-Ti (Core Lib) with Google Test
+- RTXTest -> Unit Test App with MSTest
   <br/><br/>
 - WinUI -> UI for Windows with winrt + WinUI2 (because 3 does not have Mica)
 - wxWidgets -> UI for Linux with wxWidgets (GTK3)

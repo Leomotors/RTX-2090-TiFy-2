@@ -8,6 +8,13 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)GPUConfig.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)ImageHandler.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)IProgressBar.hpp" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Macros\opencv.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Macros\opencv.hpp">
+      <Filter>Macros</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Macros">
+      <UniqueIdentifier>{27d4cd94-ab1d-46f8-9611-2de9c099fc40}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

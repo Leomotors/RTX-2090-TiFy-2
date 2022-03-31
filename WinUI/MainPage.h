@@ -2,27 +2,19 @@
 
 #include "MainPage.g.h"
 
+using namespace winrt;
+using namespace Windows::Foundation;
+using namespace Windows::UI::Xaml;
+
 namespace winrt::RTX_2090_TiFy::implementation {
 struct MainPage : MainPageT<MainPage> {
     MainPage();
 
-    int32_t MyProperty();
-    void MyProperty(int32_t value);
-    Windows::Foundation::IAsyncAction SelectInput_Click(
-        winrt::Windows::Foundation::IInspectable const& sender,
-        winrt::Windows::UI::Xaml::RoutedEventArgs const& e);
-    Windows::Foundation::IAsyncAction SelectOutput_Click(
-        winrt::Windows::Foundation::IInspectable const& sender,
-        winrt::Windows::UI::Xaml::RoutedEventArgs const& e);
-    Windows::Foundation::IAsyncAction License_Click(
-        winrt::Windows::Foundation::IInspectable const& sender,
-        winrt::Windows::UI::Xaml::RoutedEventArgs const& e);
-    Windows::Foundation::IAsyncAction VisitSite_Click(
-        winrt::Windows::Foundation::IInspectable const& sender,
-        winrt::Windows::UI::Xaml::RoutedEventArgs const& e);
-    Windows::Foundation::IAsyncAction About_Click(
-        winrt::Windows::Foundation::IInspectable const& sender,
-        winrt::Windows::UI::Xaml::RoutedEventArgs const& e);
+    void Settings_Click(IInspectable const& sender, RoutedEventArgs const& e);
+    void NavigationView_SelectionChanged(
+        Microsoft::UI::Xaml::Controls::NavigationView const& sender,
+        Microsoft::UI::Xaml::Controls::
+            NavigationViewSelectionChangedEventArgs const& args);
 };
 }  // namespace winrt::RTX_2090_TiFy::implementation
 

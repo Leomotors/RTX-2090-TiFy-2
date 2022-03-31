@@ -1,3 +1,6 @@
-#pragma once
+﻿#pragma once
 
-#include "gtest/gtest.h"
+#include <collection.h>
+#include <ppltasks.h>
+
+#include "UnitTestApp.xaml.h"
