@@ -1,25 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ApplicationDefinition Include="App.xaml" />
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="$(GeneratedFilesDir)module.g.cpp">
-      <Filter>generated</Filter>
+      <Filter>gitignored</Filter>
     </ClCompile>
     <ClCompile Include="AppState.cpp">
-      <Filter>Classes</Filter>
+      <Filter>src\Classes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
     <ClInclude Include="AppState.hpp">
-      <Filter>Classes</Filter>
+      <Filter>src\Classes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Assets\LockScreenLogo.scale-200.png" />
     <Image Include="Assets\SmallTile.scale-100.png">
       <Filter>Assets</Filter>
     </Image>
@@ -148,49 +144,58 @@
     <None Include="packages.config" />
     <None Include="PropertySheet.props" />
     <None Include="opencv_world455.dll">
-      <Filter>dll</Filter>
+      <Filter>gitignored</Filter>
     </None>
     <None Include="opencv_world455d.dll">
-      <Filter>dll</Filter>
+      <Filter>gitignored</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
     <Text Include="readme.txt" />
     <Text Include="LICENSE.g.txt">
-      <Filter>generated</Filter>
+      <Filter>gitignored</Filter>
     </Text>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Styles.xaml" />
     <Page Include="HomePage.xaml">
-      <Filter>Views</Filter>
+      <Filter>src\Views</Filter>
     </Page>
-    <Page Include="MainPage.xaml" />
     <Page Include="Settings.xaml">
-      <Filter>Views</Filter>
+      <Filter>src\Views</Filter>
     </Page>
     <Page Include="ExternalLink.xaml">
-      <Filter>Controls</Filter>
+      <Filter>src\Controls</Filter>
+    </Page>
+    <Page Include="MainPage.xaml">
+      <Filter>src</Filter>
+    </Page>
+    <Page Include="Styles.xaml">
+      <Filter>src</Filter>
     </Page>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Assets">
       <UniqueIdentifier>{d1bbeead-ba69-4fa2-8773-eb18f7e2e78a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Views">
-      <UniqueIdentifier>{ad6fcc02-b5aa-46fe-a7b2-6c9e5ac5f9ca}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Controls">
-      <UniqueIdentifier>{c5600c22-651a-4c0c-8e71-26724e404484}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="dll">
-      <UniqueIdentifier>{88e3a0da-ca70-497c-8721-37fdd97f210b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="generated">
+    <Filter Include="gitignored">
       <UniqueIdentifier>{ba00490d-c905-4e4c-b456-ec7832d16cc3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Classes">
+    <Filter Include="src">
+      <UniqueIdentifier>{52138440-07b5-4fdd-8898-7b482eb5daef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Views">
+      <UniqueIdentifier>{ad6fcc02-b5aa-46fe-a7b2-6c9e5ac5f9ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Controls">
+      <UniqueIdentifier>{c5600c22-651a-4c0c-8e71-26724e404484}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Classes">
       <UniqueIdentifier>{c7644487-8416-4e62-a352-94a3bfe3f8af}</UniqueIdentifier>
     </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Filter>src</Filter>
+    </ApplicationDefinition>
   </ItemGroup>
 </Project>

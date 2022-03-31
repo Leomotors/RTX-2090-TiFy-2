@@ -1,8 +1,6 @@
-namespace RTX_2090_TiFy
-{
+namespace RTX_2090_TiFy {
     [default_interface]
-    runtimeclass ExternalLink : Windows.UI.Xaml.Controls.UserControl
-    {
+    runtimeclass ExternalLink : Windows.UI.Xaml.Controls.UserControl {
         ExternalLink();
         String Text;
         String Url;
