@@ -3,6 +3,7 @@
 #include "UnitTestApp.g.h"
 
 namespace RTXTest {
+
 /// <summary>
 /// Provides application-specific behavior to supplement the default Application
 /// class.
@@ -22,4 +23,5 @@ ref class App sealed {
         Platform::Object ^ sender,
         Windows::UI::Xaml::Navigation::NavigationFailedEventArgs ^ e);
 };
+
 }  // namespace RTXTest

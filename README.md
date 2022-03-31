@@ -11,7 +11,7 @@ _work in progress_
 - RTXTest -> Unit Test App with MSTest
   <br/><br/>
 - WinUI -> UI for Windows with winrt + WinUI2 (because 3 does not have Mica)
-- wxWidgets -> UI for Linux with wxWidgets (GTK3)
+- wxWidgets? -> UI for Linux with wxWidgets (GTK3)
 
 ## Developing - Windows
 
