@@ -9,6 +9,7 @@
         <muxc:XamlControlsResources>
             <muxc:XamlControlsResources.MergedDictionaries>
                 <ResourceDictionary Source="./Styles.xaml" />
+                <ResourceDictionary Source="./VendorStyles.xaml" />
             </muxc:XamlControlsResources.MergedDictionaries>
         </muxc:XamlControlsResources>
     </Application.Resources>

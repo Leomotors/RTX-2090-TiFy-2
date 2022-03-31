@@ -16,3 +16,5 @@ _work in progress_
 ## Developing - Windows
 
 - opencv_world455.dll and opencv_world455d.dll should exists at /WinUI
+
+Note: Many components are reused, lol

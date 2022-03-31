@@ -48,7 +48,7 @@
                 <muxc:NavigationViewItem Margin="10,0,0,0" IsSelected="True">Home</muxc:NavigationViewItem>
             </muxc:NavigationView.MenuItems>
 
-            <ScrollViewer Padding="30,30,30,10">
+            <ScrollViewer Padding="30,10">
                 <Frame x:Name="ContentFrame" />
             </ScrollViewer>
         </muxc:NavigationView>

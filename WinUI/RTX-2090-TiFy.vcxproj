@@ -148,6 +148,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AppSettings.hpp" />
     <ClInclude Include="AppState.hpp" />
     <ClInclude Include="ExternalLink.h">
       <DependentUpon>ExternalLink.xaml</DependentUpon>
@@ -168,6 +169,7 @@
       <DependentUpon>Settings.xaml</DependentUpon>
       <SubType>Code</SubType>
     </ClInclude>
+    <ClInclude Include="ThemeColor.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -187,6 +189,9 @@
     </Page>
     <Page Include="Styles.xaml">
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="VendorStyles.xaml">
+      <DeploymentContent>true</DeploymentContent>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -237,6 +242,7 @@
     <Image Include="Assets\Wide310x150Logo.scale-200.png" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AppSettings.cpp" />
     <ClCompile Include="AppState.cpp" />
     <ClCompile Include="ExternalLink.cpp">
       <DependentUpon>ExternalLink.xaml</DependentUpon>
@@ -260,6 +266,7 @@
       <DependentUpon>Settings.xaml</DependentUpon>
       <SubType>Code</SubType>
     </ClCompile>
+    <ClCompile Include="ThemeColor.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Midl Include="App.idl">

@@ -14,7 +14,7 @@
             FontSize="32"
             FontWeight="SemiBold"
             TextAlignment="Center">
-            Welcome to RTX-2090-Ti
+            Welcome to RTX 2090 TiFy
         </TextBlock>
 
         <StackPanel Orientation="Horizontal">
@@ -41,8 +41,7 @@
             </StackPanel>
 
             <StackPanel Padding="10" Orientation="Vertical">
-                <TextBlock>TODO</TextBlock>
-
+                <TextBlock FontSize="69">TODO</TextBlock>
             </StackPanel>
         </StackPanel>
     </StackPanel>

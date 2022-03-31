@@ -3,6 +3,9 @@
 #include "MainPage.h"
 #include "App.h"
 
+#include "AppState.hpp"
+#include "AppSettings.hpp"
+
 using namespace winrt;
 using namespace Windows::ApplicationModel;
 using namespace Windows::ApplicationModel::Activation;
@@ -21,6 +24,16 @@ using namespace RTX_2090_TiFy::implementation;
 App::App() {
     InitializeComponent();
     Suspending({this, &App::OnSuspending});
+
+    auto settings =
+        Windows::Storage::ApplicationData::Current().LocalSettings().Values();
+
+    int32_t setTheme =
+        unbox_value_or<int32_t>(settings.Lookup(AppSettings::Theme), 2);
+
+    AppSettings::CurrentTheme = setTheme;
+
+    Application::Current().RequestedTheme(static_cast<ApplicationTheme>(setTheme));
 
 #if defined _DEBUG && \
     !defined DISABLE_XAML_GENERATED_BREAK_ON_UNHANDLED_EXCEPTION

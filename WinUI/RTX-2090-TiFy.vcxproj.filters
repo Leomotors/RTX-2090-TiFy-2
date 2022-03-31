@@ -8,10 +8,22 @@
     <ClCompile Include="AppState.cpp">
       <Filter>src\Classes</Filter>
     </ClCompile>
+    <ClCompile Include="AppSettings.cpp">
+      <Filter>src\Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="ThemeColor.cpp">
+      <Filter>src\Classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
     <ClInclude Include="AppState.hpp">
+      <Filter>src\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="AppSettings.hpp">
+      <Filter>src\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="ThemeColor.hpp">
       <Filter>src\Classes</Filter>
     </ClInclude>
   </ItemGroup>
@@ -170,7 +182,10 @@
       <Filter>src</Filter>
     </Page>
     <Page Include="Styles.xaml">
-      <Filter>src</Filter>
+      <Filter>src\Styles</Filter>
+    </Page>
+    <Page Include="VendorStyles.xaml">
+      <Filter>src\Styles</Filter>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -191,6 +206,9 @@
     </Filter>
     <Filter Include="src\Classes">
       <UniqueIdentifier>{c7644487-8416-4e62-a352-94a3bfe3f8af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Styles">
+      <UniqueIdentifier>{9e9c8f50-3ab6-4932-b699-e6a4549521ae}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

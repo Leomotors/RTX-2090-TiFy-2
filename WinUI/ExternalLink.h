@@ -7,8 +7,6 @@ namespace winrt::RTX_2090_TiFy::implementation {
 struct ExternalLink : ExternalLinkT<ExternalLink> {
     ExternalLink();
 
-    static Windows::UI::Color ExtLinkColor;
-
     hstring Text();
     void Text(hstring const& value);
     static DependencyProperty TextProperty;

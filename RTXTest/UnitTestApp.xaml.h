@@ -1,9 +1,4 @@
-﻿//
-// App.xaml.h
-// Declaration of the App class.
-//
-
-#pragma once
+﻿#pragma once
 
 #include "UnitTestApp.g.h"
 

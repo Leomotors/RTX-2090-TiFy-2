@@ -1,8 +1,3 @@
-//
-// App.xaml.cpp
-// Implementation of the App class.
-//
-
 #include "pch.h"
 
 using namespace RTXTest;

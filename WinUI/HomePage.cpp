@@ -26,11 +26,14 @@ IAsyncAction HomePage::SelectInput_Click(IInspectable const& sender,
     picker.FileTypeFilter().Append(L".jpeg");
     picker.FileTypeFilter().Append(L".png");
 
+    InputLoadProgress().Visibility(Visibility::Visible);
+
     auto file = co_await picker.PickSingleFileAsync();
 
-    if (!file) co_return;
-
-    InputLoadProgress().Visibility(Visibility::Visible);
+    if (!file) {
+        InputLoadProgress().Visibility(Visibility::Collapsed);
+        co_return;
+    }
 
     auto folder = ApplicationData::Current().TemporaryFolder();
 
