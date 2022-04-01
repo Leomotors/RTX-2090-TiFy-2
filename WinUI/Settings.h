@@ -21,8 +21,8 @@ struct Settings : SettingsT<Settings> {
 
     void OpenTempFolder_Click(IInspectable const& sender,
                               RoutedEventArgs const& e);
-    IAsyncAction RickRollSwitch_Toggled(IInspectable const& sender,
-                                        RoutedEventArgs const& e);
+
+    IAsyncAction RickRollSwitch_Toggled(Controls::ToggleSwitch const& sender);
 };
 
 }  // namespace winrt::RTX_2090_TiFy::implementation

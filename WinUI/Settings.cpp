@@ -80,15 +80,12 @@ void Settings::OpenTempFolder_Click(IInspectable const&,
     Windows::System::Launcher::LaunchFolderAsync(folder);
 }
 
-IAsyncAction Settings::RickRollSwitch_Toggled(IInspectable const& sender,
-                                              RoutedEventArgs const&) {
-    auto toggle = sender.as<ToggleSwitch>();
-
-    if (toggle.IsOn())
+IAsyncAction Settings::RickRollSwitch_Toggled(ToggleSwitch const& sender) {
+    if (sender.IsOn())
         co_await Windows::System::Launcher::LaunchUriAsync(
             Uri(L"https://www.youtube.com/watch?v=dQw4w9WgXcQ"));
 
-    toggle.IsOn(false);
+    sender.IsOn(false);
 }
 
 }  // namespace winrt::RTX_2090_TiFy::implementation

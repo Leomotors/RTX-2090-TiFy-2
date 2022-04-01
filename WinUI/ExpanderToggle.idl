@@ -1,0 +1,12 @@
+namespace RTX_2090_TiFy {
+
+[default_interface] runtimeclass ExpanderToggle
+    : Windows.UI.Xaml.Controls.UserControl {
+    ExpanderToggle();
+    String Glyph;
+    String Text;
+    Windows.Foundation.EventHandler<Windows.UI.Xaml.Controls.ToggleSwitch>
+        Switch_Toggled;
+}
+
+}  // namespace RTX_2090_TiFy

@@ -1,6 +1,7 @@
 namespace RTX_2090_TiFy {
-    [default_interface]
-    runtimeclass MainPage : Windows.UI.Xaml.Controls.Page {
-        MainPage();
-    }
+
+[default_interface] runtimeclass MainPage : Windows.UI.Xaml.Controls.Page {
+    MainPage();
 }
+
+}  // namespace RTX_2090_TiFy

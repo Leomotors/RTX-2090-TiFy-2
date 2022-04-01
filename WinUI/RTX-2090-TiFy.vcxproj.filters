@@ -151,7 +151,6 @@
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.debug.appxmanifest" />
-    <AppxManifest Include="Package.appxmanifest" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -188,6 +187,9 @@
     </Page>
     <Page Include="VendorStyles.xaml">
       <Filter>src\Styles</Filter>
+    </Page>
+    <Page Include="ExpanderToggle.xaml">
+      <Filter>src\Controls</Filter>
     </Page>
   </ItemGroup>
   <ItemGroup>

@@ -89,7 +89,7 @@
             </muxc:Expander.Content>
         </muxc:Expander>
 
-        <Border
+        <!--<Border
             Height="50"
             Margin="0,10"
             Background="{ThemeResource ExpanderHeaderBackground}"
@@ -112,7 +112,12 @@
                     Style="{StaticResource RightAlignedToggleSwitchStyle}"
                     Toggled="RickRollSwitch_Toggled" />
             </RelativePanel>
-        </Border>
+        </Border>-->
+
+        <local:ExpanderToggle
+            Glyph="&#xE964;"
+            Switch_Toggled=""
+            Text="Use GPU Acceleration" />
 
         <TextBlock Style="{StaticResource Header2}">
             App Data
