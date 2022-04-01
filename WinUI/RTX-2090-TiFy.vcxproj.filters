@@ -150,6 +150,7 @@
     </Image>
   </ItemGroup>
   <ItemGroup>
+    <AppxManifest Include="Package.debug.appxmanifest" />
     <AppxManifest Include="Package.appxmanifest" />
   </ItemGroup>
   <ItemGroup>
@@ -161,6 +162,7 @@
     <None Include="opencv_world455d.dll">
       <Filter>gitignored</Filter>
     </None>
+    <None Include="Package.StoreAssociation.xml" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="readme.txt" />

@@ -20,10 +20,10 @@ Settings::Settings() {
 
     auto version = Windows::ApplicationModel::Package::Current().Id().Version();
 
-    auto vertext = std::format("Version: {}.{} Build {}.{}", version.Major,
+    auto vertext = std::format(L"Version: {}.{} Build {}.{}", version.Major,
                                version.Minor, version.Build, version.Revision);
 
-    AppVersion().Text(to_hstring(vertext));
+    AppVersion().Text(vertext);
 
     using namespace Media;
 
@@ -49,24 +49,6 @@ IAsyncAction Settings::License_Click(IInspectable const&,
 
     dialog.Content(box_value(license));
 
-    co_await dialog.ShowAsync();
-}
-
-IAsyncAction Settings::About_Click(IInspectable const&,
-                                   RoutedEventArgs const&) {
-    auto dialog = ContentDialog();
-    dialog.Title(box_value(L"About App"));
-    dialog.DefaultButton(ContentDialogButton::Close);
-    dialog.CloseButtonText(L"Close");
-
-    auto version = Windows::ApplicationModel::Package::Current().Id().Version();
-
-    auto vertext = std::format("{}.{} Build {}.{}", version.Major,
-                               version.Minor, version.Build, version.Revision);
-
-    auto content = std::format("App Version: {}", vertext);
-
-    dialog.Content(box_value(to_hstring(content)));
     co_await dialog.ShowAsync();
 }
 

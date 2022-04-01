@@ -3,6 +3,8 @@
 #include "MainPage.h"
 #include "MainPage.g.cpp"
 
+#include "AppState.hpp"
+
 using namespace winrt;
 using namespace Windows::Foundation;
 using namespace Windows::UI;
@@ -17,9 +19,25 @@ MainPage::MainPage() {
     InitializeComponent();
 
     auto titleBar = ApplicationView::GetForCurrentView().TitleBar();
-    titleBar.ButtonBackgroundColor(Colors::Transparent());
 
+    titleBar.ButtonBackgroundColor(Colors::Transparent());
     titleBar.ButtonInactiveBackgroundColor(Colors::Transparent());
+
+    if (AppState::IsLightTheme()) {
+        titleBar.ButtonForegroundColor(Colors::Black());
+        titleBar.ButtonHoverForegroundColor(Colors::Black());
+        titleBar.ButtonPressedForegroundColor(Colors::Black());
+
+        titleBar.ButtonHoverBackgroundColor(Color(32, 0, 0, 0));
+        titleBar.ButtonPressedBackgroundColor(Color(16, 0, 0, 0));
+    } else {
+        titleBar.ButtonForegroundColor(Colors::White());
+        titleBar.ButtonHoverForegroundColor(Colors::White());
+        titleBar.ButtonPressedForegroundColor(Colors::White());
+
+        titleBar.ButtonHoverBackgroundColor(Color(32, 255, 255, 255));
+        titleBar.ButtonPressedBackgroundColor(Color(16, 255, 255, 255));
+    }
 
     // Hide Default Title Bar
     auto coreTitleBar = CoreApplication::GetCurrentView().TitleBar();
