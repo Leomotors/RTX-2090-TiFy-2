@@ -20,6 +20,8 @@ ExternalLink::ExternalLink() {
         Media::SolidColorBrush(Theme::get(Theme::Color::ExternalLink)));
 }
 
+//--- PROPERTY Text ---//
+
 hstring ExternalLink::Text() { return GetValue(TextProperty).as<hstring>(); }
 
 void ExternalLink::Text(hstring const &value) {
@@ -31,6 +33,8 @@ DependencyProperty ExternalLink::TextProperty = DependencyProperty::Register(
     xaml_typename<RTX_2090_TiFy::ExternalLink>(), PropertyMetadata(nullptr));
 
 hstring ExternalLink::Url() { return GetValue(UrlProperty).as<hstring>(); }
+
+//--- PROPERTY URL ---//
 
 void ExternalLink::Url(hstring const &value) {
     SetValue(UrlProperty, box_value(value));

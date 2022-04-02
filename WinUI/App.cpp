@@ -33,7 +33,8 @@ App::App() {
 
     AppSettings::CurrentTheme = setTheme;
 
-    Application::Current().RequestedTheme(static_cast<ApplicationTheme>(setTheme));
+    Application::Current().RequestedTheme(
+        static_cast<ApplicationTheme>(setTheme));
 
 #if defined _DEBUG && \
     !defined DISABLE_XAML_GENERATED_BREAK_ON_UNHANDLED_EXCEPTION

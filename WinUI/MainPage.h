@@ -7,6 +7,7 @@ using namespace Windows::Foundation;
 using namespace Windows::UI::Xaml;
 
 namespace winrt::RTX_2090_TiFy::implementation {
+
 struct MainPage : MainPageT<MainPage> {
     MainPage();
 
@@ -16,6 +17,7 @@ struct MainPage : MainPageT<MainPage> {
         Microsoft::UI::Xaml::Controls::
             NavigationViewSelectionChangedEventArgs const& args);
 };
+
 }  // namespace winrt::RTX_2090_TiFy::implementation
 
 namespace winrt::RTX_2090_TiFy::factory_implementation {

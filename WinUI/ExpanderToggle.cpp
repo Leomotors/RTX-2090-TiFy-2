@@ -11,6 +11,8 @@ namespace winrt::RTX_2090_TiFy::implementation {
 
 ExpanderToggle::ExpanderToggle() { InitializeComponent(); }
 
+//--- PROPERTY Glyph ---//
+
 hstring ExpanderToggle::Glyph() {
     return GetValue(GlyphProperty).as<hstring>();
 }
@@ -24,6 +26,8 @@ DependencyProperty ExpanderToggle::GlyphProperty = DependencyProperty::Register(
     winrt::xaml_typename<RTX_2090_TiFy::ExpanderToggle>(),
     PropertyMetadata(nullptr));
 
+//--- PROPERTY Text ---//
+
 hstring ExpanderToggle::Text() { return GetValue(TextProperty).as<hstring>(); }
 
 void ExpanderToggle::Text(hstring const &value) {
@@ -33,6 +37,8 @@ void ExpanderToggle::Text(hstring const &value) {
 DependencyProperty ExpanderToggle::TextProperty = DependencyProperty::Register(
     L"Text", xaml_typename<hstring>(),
     xaml_typename<RTX_2090_TiFy::ExpanderToggle>(), PropertyMetadata(nullptr));
+
+//--- EVENT Switch_Toggled ---//
 
 event_token ExpanderToggle::Switch_Toggled(
     EventHandler<ToggleSwitch> const &handler) {

@@ -36,7 +36,7 @@ Settings::Settings() {
 }
 
 fire_and_forget Settings::License_Click(IInspectable const&,
-                                     RoutedEventArgs const&) {
+                                        RoutedEventArgs const&) {
     using namespace Windows::Storage;
 
     auto dialog = ContentDialog();
@@ -82,7 +82,7 @@ void Settings::OpenTempFolder_Click(IInspectable const&,
 }
 
 fire_and_forget Settings::RickRollSwitch_Toggled(IInspectable const&,
-                                              ToggleSwitch const& e) {
+                                                 ToggleSwitch const& e) {
     auto dirtyHackIfYouCanFixThisSendMePullRequest = e;
     if (dirtyHackIfYouCanFixThisSendMePullRequest.IsOn())
         co_await Windows::System::Launcher::LaunchUriAsync(

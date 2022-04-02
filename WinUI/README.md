@@ -1,3 +1,19 @@
+# WinUI
+
+The UI Implementation of RTX 2090 TiFy using WinUI 2 with UWP C++/WinRT
+
+*For Windows Only, it is already mentioned in its name*
+
+WinUI is a UI library for creating Windows-Looking app on Windows. (Note: WinUI is also supported on React Native. These are only two ways you can make native windows11-looking app.)
+
+I prefer WinUi 2 over 3 because 3 is very new and does not support Mica. Moreover, the Xaml Controls Gallery still using WinUI 2. But when WinUI 3 get upgraded, I will definitely switch.
+
+## Tips & Trick
+
+To be able to write a beautiful Windows App like this, you need... endurance,
+to read documentations, go through hundreds of YouTube Video, thousands of Stack Overflow.
+
+```
 ========================================================================
     C++/WinRT RTX-2090-TiFy Project Overview
 ========================================================================
@@ -21,3 +37,4 @@ Steps:
 Learn more about C++/WinRT here:
 http://aka.ms/cppwinrt/
 ========================================================================
+```

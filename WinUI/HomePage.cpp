@@ -13,8 +13,8 @@ namespace winrt::RTX_2090_TiFy::implementation {
 
 HomePage::HomePage() { InitializeComponent(); }
 
-IAsyncAction HomePage::SelectInput_Click(IInspectable const& sender,
-                                         RoutedEventArgs const& e) {
+fire_and_forget HomePage::SelectInput_Click(IInspectable const& sender,
+                                            RoutedEventArgs const& e) {
     using namespace Windows::Storage;
     using namespace Windows::Storage::Pickers;
     using namespace Windows::UI::Xaml::Media;

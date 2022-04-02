@@ -321,7 +321,7 @@
     <None Include="packages.config" />
     <None Include="PropertySheet.props" />
     <Text Include="LICENSE.g.txt" />
-    <Text Include="readme.txt">
+    <Text Include="README.md">
       <DeploymentContent>false</DeploymentContent>
     </Text>
   </ItemGroup>

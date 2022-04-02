@@ -12,7 +12,7 @@ struct Settings : SettingsT<Settings> {
     Settings();
 
     fire_and_forget License_Click(IInspectable const& sender,
-                               RoutedEventArgs const& e);
+                                  RoutedEventArgs const& e);
 
     void ThemeSelector_Loaded(IInspectable const& sender,
                               RoutedEventArgs const& e);

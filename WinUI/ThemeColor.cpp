@@ -10,6 +10,7 @@ namespace winrt::RTX_2090_TiFy::Theme {
 bool IsInitialized = false;
 std::vector<Windows::UI::Color> Colors;
 
+// For reference
 // enum class Color {
 //     ExternalLink = 0,
 //     AlertForeground = 1,

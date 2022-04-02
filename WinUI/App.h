@@ -4,6 +4,7 @@
 #include "ImageHandler.hpp"
 
 namespace winrt::RTX_2090_TiFy::implementation {
+
 struct App : AppT<App> {
     App();
 
@@ -18,4 +19,5 @@ struct App : AppT<App> {
 
     RTXLib::ImageHandler imageHandler;
 };
+
 }  // namespace winrt::RTX_2090_TiFy::implementation
