@@ -83,12 +83,13 @@ void Settings::OpenTempFolder_Click(IInspectable const&,
 
 fire_and_forget Settings::RickRollSwitch_Toggled(IInspectable const&,
                                                  ToggleSwitch const& e) {
-    auto dirtyHackIfYouCanFixThisSendMePullRequest = e;
-    if (dirtyHackIfYouCanFixThisSendMePullRequest.IsOn())
+    auto toggle = e;
+
+    if (toggle.IsOn())
         co_await Windows::System::Launcher::LaunchUriAsync(
             Uri(AppConstants::URLToHeaven));
 
-    dirtyHackIfYouCanFixThisSendMePullRequest.IsOn(false);
+    toggle.IsOn(false);
 }
 
 }  // namespace winrt::RTX_2090_TiFy::implementation

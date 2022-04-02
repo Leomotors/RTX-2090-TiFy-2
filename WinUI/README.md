@@ -8,6 +8,15 @@ WinUI is a UI library for creating Windows-Looking app on Windows. (Note: WinUI 
 
 I prefer WinUi 2 over 3 because 3 is very new and does not support Mica. Moreover, the Xaml Controls Gallery still using WinUI 2. But when WinUI 3 get upgraded, I will definitely switch.
 
+## The folder structure looks ugly?
+
+Yes it is, I have tried moving CPP files into folders, and guess what?
+
+*Compilation Error*
+
+But Visual Studio has filter, so, if you open this project in Visual Studio.
+The folder structures may look a bit more friendly.
+
 ## Tips & Trick
 
 To be able to write a beautiful Windows App like this, you need... endurance,

@@ -19,9 +19,11 @@ std::vector<Windows::UI::Color> Colors;
 
 Windows::UI::Color get(Color key) {
     if (!IsInitialized) {
+        IsInitialized = true;
         bool IsLight = AppState::IsLightTheme();
         using WinColor = Windows::UI::Color;
-        // Theme Colors are color picked from System
+        // Theme Colors are color picked from system apps' UI
+        // to achieve most window-ish experience
         // Copied from You are a Failure!
         Colors = {
             IsLight ? WinColor(255, 0, 62, 146) : WinColor(255, 153, 235, 255),
