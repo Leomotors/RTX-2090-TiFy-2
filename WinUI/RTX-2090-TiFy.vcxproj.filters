@@ -26,6 +26,9 @@
     <ClInclude Include="ThemeColor.hpp">
       <Filter>src\Classes</Filter>
     </ClInclude>
+    <ClInclude Include="AppConstants.hpp">
+      <Filter>src\Classes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\SmallTile.scale-100.png">
@@ -190,6 +193,9 @@
     </Page>
     <Page Include="ExpanderToggle.xaml">
       <Filter>src\Controls</Filter>
+    </Page>
+    <Page Include="Constants.xaml">
+      <Filter>src\Styles</Filter>
     </Page>
   </ItemGroup>
   <ItemGroup>

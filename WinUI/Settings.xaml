@@ -89,34 +89,9 @@
             </muxc:Expander.Content>
         </muxc:Expander>
 
-        <!--<Border
-            Height="50"
-            Margin="0,10"
-            Background="{ThemeResource ExpanderHeaderBackground}"
-            CornerRadius="4">
-            <RelativePanel Height="50" Padding="20,5">
-                <FontIcon
-                    x:Name="CardIcon"
-                    Margin="0,10,0,0"
-                    FontFamily="{StaticResource SymbolThemeFontFamily}"
-                    FontSize="18"
-                    Glyph="&#xE964;" />
-                <TextBlock
-                    Margin="15,8,0,0"
-                    FontSize="16"
-                    RelativePanel.RightOf="CardIcon">
-                    Use GPU Acceleration
-                </TextBlock>
-                <ToggleSwitch
-                    RelativePanel.AlignRightWithPanel="True"
-                    Style="{StaticResource RightAlignedToggleSwitchStyle}"
-                    Toggled="RickRollSwitch_Toggled" />
-            </RelativePanel>
-        </Border>-->
-
         <local:ExpanderToggle
             Glyph="&#xE964;"
-            Switch_Toggled=""
+            Switch_Toggled="RickRollSwitch_Toggled"
             Text="Use GPU Acceleration" />
 
         <TextBlock Style="{StaticResource Header2}">
@@ -131,7 +106,7 @@
         <local:ExternalLink
             Margin="0,10,0,0"
             Text="GitHub Project"
-            Url="https://github.com/Leomotors/RTX-2090-TiFy-2" />
+            Url="{StaticResource GitHubURL}" />
         <HyperlinkButton Click="License_Click">View License (MIT)</HyperlinkButton>
     </StackPanel>
 </Page>

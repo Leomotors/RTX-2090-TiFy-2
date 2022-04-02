@@ -6,6 +6,7 @@
 
 #include <format>
 
+#include "AppConstants.hpp"
 #include "AppSettings.hpp"
 #include "ThemeColor.hpp"
 
@@ -34,7 +35,7 @@ Settings::Settings() {
         SolidColorBrush(Theme::get(Theme::Color::AlertForeground)));
 }
 
-IAsyncAction Settings::License_Click(IInspectable const&,
+fire_and_forget Settings::License_Click(IInspectable const&,
                                      RoutedEventArgs const&) {
     using namespace Windows::Storage;
 
@@ -80,12 +81,14 @@ void Settings::OpenTempFolder_Click(IInspectable const&,
     Windows::System::Launcher::LaunchFolderAsync(folder);
 }
 
-IAsyncAction Settings::RickRollSwitch_Toggled(ToggleSwitch const& sender) {
-    if (sender.IsOn())
+fire_and_forget Settings::RickRollSwitch_Toggled(IInspectable const&,
+                                              ToggleSwitch const& e) {
+    auto dirtyHackIfYouCanFixThisSendMePullRequest = e;
+    if (dirtyHackIfYouCanFixThisSendMePullRequest.IsOn())
         co_await Windows::System::Launcher::LaunchUriAsync(
-            Uri(L"https://www.youtube.com/watch?v=dQw4w9WgXcQ"));
+            Uri(AppConstants::URLToHeaven));
 
-    sender.IsOn(false);
+    dirtyHackIfYouCanFixThisSendMePullRequest.IsOn(false);
 }
 
 }  // namespace winrt::RTX_2090_TiFy::implementation

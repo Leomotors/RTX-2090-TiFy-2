@@ -5,7 +5,7 @@ namespace RTX_2090_TiFy {
     ExpanderToggle();
     String Glyph;
     String Text;
-    Windows.Foundation.EventHandler<Windows.UI.Xaml.Controls.ToggleSwitch>
+    event Windows.Foundation.EventHandler<Windows.UI.Xaml.Controls.ToggleSwitch>
         Switch_Toggled;
 }
 

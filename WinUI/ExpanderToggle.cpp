@@ -34,23 +34,18 @@ DependencyProperty ExpanderToggle::TextProperty = DependencyProperty::Register(
     L"Text", xaml_typename<hstring>(),
     xaml_typename<RTX_2090_TiFy::ExpanderToggle>(), PropertyMetadata(nullptr));
 
-EventHandler<ToggleSwitch> ExpanderToggle::Switch_Toggled() {
-    return GetValue(Switch_ToggledProperty).as<EventHandler<ToggleSwitch>>();
+event_token ExpanderToggle::Switch_Toggled(
+    EventHandler<ToggleSwitch> const &handler) {
+    return m_Switch_Toggled.add(handler);
 }
 
-void ExpanderToggle::Switch_Toggled(EventHandler<ToggleSwitch> const &value) {
-    SetValue(Switch_ToggledProperty, box_value(value));
+void ExpanderToggle::Switch_Toggled(event_token const &token) {
+    m_Switch_Toggled.remove(token);
 }
-
-DependencyProperty ExpanderToggle::Switch_ToggledProperty =
-    DependencyProperty::Register(L"Switch_Toggled",
-                                 xaml_typename<EventHandler<ToggleSwitch>>(),
-                                 xaml_typename<RTX_2090_TiFy::ExpanderToggle>(),
-                                 PropertyMetadata(nullptr));
 
 void ExpanderToggle::ToggleSwitch_Toggled(IInspectable const &sender,
-                                          RoutedEventArgs const &e) {
-    Switch_Toggled()(*this, sender.as<ToggleSwitch>());
+                                          RoutedEventArgs const &) {
+    m_Switch_Toggled(*this, sender.as<ToggleSwitch>());
 }
 
 }  // namespace winrt::RTX_2090_TiFy::implementation

@@ -149,6 +149,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AppConstants.hpp" />
     <ClInclude Include="AppSettings.hpp" />
     <ClInclude Include="AppState.hpp" />
     <ClInclude Include="ExpanderToggle.h">
@@ -180,6 +181,9 @@
     <ApplicationDefinition Include="App.xaml">
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Constants.xaml">
+      <DeploymentContent>true</DeploymentContent>
+    </Page>
     <Page Include="ExpanderToggle.xaml">
       <SubType>Designer</SubType>
     </Page>

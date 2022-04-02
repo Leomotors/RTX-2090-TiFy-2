@@ -11,7 +11,7 @@ namespace winrt::RTX_2090_TiFy::implementation {
 struct Settings : SettingsT<Settings> {
     Settings();
 
-    IAsyncAction License_Click(IInspectable const& sender,
+    fire_and_forget License_Click(IInspectable const& sender,
                                RoutedEventArgs const& e);
 
     void ThemeSelector_Loaded(IInspectable const& sender,
@@ -22,7 +22,8 @@ struct Settings : SettingsT<Settings> {
     void OpenTempFolder_Click(IInspectable const& sender,
                               RoutedEventArgs const& e);
 
-    IAsyncAction RickRollSwitch_Toggled(Controls::ToggleSwitch const& sender);
+    fire_and_forget RickRollSwitch_Toggled(IInspectable const& sender,
+                                           Controls::ToggleSwitch const& e);
 };
 
 }  // namespace winrt::RTX_2090_TiFy::implementation

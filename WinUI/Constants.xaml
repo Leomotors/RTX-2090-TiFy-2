@@ -1,0 +1,7 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <x:String x:Key="GitHubURL">
+        https://github.com/Leomotors/RTX-2090-TiFy-SUPER
+    </x:String>
+
+</ResourceDictionary>

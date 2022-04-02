@@ -20,9 +20,9 @@ struct ExpanderToggle : ExpanderToggleT<ExpanderToggle> {
     void Text(hstring const& value);
     static DependencyProperty TextProperty;
 
-    EventHandler<ToggleSwitch> Switch_Toggled();
-    void Switch_Toggled(EventHandler<ToggleSwitch> const& value);
-    static DependencyProperty Switch_ToggledProperty;
+    event_token Switch_Toggled(EventHandler<ToggleSwitch> const& value);
+    void Switch_Toggled(event_token const& token);
+    event<EventHandler<ToggleSwitch>> m_Switch_Toggled;
 
     void ToggleSwitch_Toggled(IInspectable const& sender,
                               RoutedEventArgs const& e);
