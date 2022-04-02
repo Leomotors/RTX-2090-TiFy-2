@@ -4,5 +4,6 @@ namespace winrt::RTX_2090_TiFy::AppConstants {
 
 constexpr auto GitHubURL = L"https://github.com/Leomotors/RTX-2090-TiFy-SUPER";
 constexpr auto URLToHeaven = L"https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+constexpr auto MSStoreLink = /* TEMP */ URLToHeaven;
 
 }  // namespace winrt::RTX_2090_TiFy::AppConstants

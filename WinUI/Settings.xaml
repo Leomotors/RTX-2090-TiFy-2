@@ -27,6 +27,7 @@
     </Page.Resources>
 
     <StackPanel>
+
         <TextBlock Style="{StaticResource PageHeader}">Settings</TextBlock>
 
         <muxc:Expander
@@ -108,5 +109,7 @@
             Text="GitHub Project"
             Url="{StaticResource GitHubURL}" />
         <HyperlinkButton Click="License_Click">View License (MIT)</HyperlinkButton>
+        <local:ExternalLink Text="Rate the App in Microsoft Store" Url="{StaticResource MSStoreLink}" />
+
     </StackPanel>
 </Page>

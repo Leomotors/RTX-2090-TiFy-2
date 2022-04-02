@@ -4,4 +4,13 @@
         https://github.com/Leomotors/RTX-2090-TiFy-SUPER
     </x:String>
 
+    <x:String x:Key="URLToHeaven">
+        https://www.youtube.com/watch?v=dQw4w9WgXcQ
+    </x:String>
+
+    <x:String x:Key="MSStoreLink">
+        <!--  TEMPORARY  -->
+        https://www.youtube.com/watch?v=dQw4w9WgXcQ
+    </x:String>
+
 </ResourceDictionary>
