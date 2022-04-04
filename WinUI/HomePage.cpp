@@ -6,6 +6,8 @@
 
 #include "AppState.hpp"
 
+#include "StringHelper.hpp"
+
 using namespace winrt;
 using namespace Windows::UI::Xaml;
 
@@ -43,6 +45,9 @@ fire_and_forget HomePage::SelectInput_Click(IInspectable const& sender,
     InputImage().Source(Imaging::BitmapImage(Uri(localCopy.Path())));
 
     AppState::ImageHandler.loadImage(to_string(localCopy.Path()));
+
+    OutputFileName().PlaceholderText(to_hstring(
+        RTXLib::StringHelper::removeFileExtension(to_string(file.Name()))));
 
     InputLoadProgress().Visibility(Visibility::Collapsed);
 }

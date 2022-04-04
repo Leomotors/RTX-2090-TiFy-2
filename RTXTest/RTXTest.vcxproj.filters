@@ -1,15 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Common">
-      <UniqueIdentifier>fe38f50b-eceb-4fbb-b073-7fbed1e8309c</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Assets">
-      <UniqueIdentifier>0064cf80-fe82-4417-8114-10e75a953682</UniqueIdentifier>
-      <Extensions>bmp;fbx;gif;jpg;jpeg;tga;tiff;tif;png</Extensions>
-    </Filter>
     <Filter Include="tests">
       <UniqueIdentifier>{08d63ae4-59b9-43ab-b1ec-902a9fc6a56d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets">
+      <UniqueIdentifier>{75ae3fcb-75b4-419d-94de-b0f872ca3eba}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -17,7 +13,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
-    <ClCompile Include="UnitTest.cpp">
+    <ClCompile Include="RTXTest.cpp">
       <Filter>tests</Filter>
     </ClCompile>
   </ItemGroup>
@@ -28,9 +24,13 @@
     <Xml Include="UnitTestApp.rd.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Assets\LockScreenLogo.scale-200.png">
-      <Filter>Assets</Filter>
-    </Image>
+    <AppxManifest Include="Package.appxmanifest" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\WinUI\opencv_world455d.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Assets\LockScreenLogo.scale-200.png" />
     <Image Include="Assets\SplashScreen.scale-200.png">
       <Filter>Assets</Filter>
     </Image>
@@ -49,11 +49,5 @@
     <Image Include="Assets\Wide310x150Logo.scale-200.png">
       <Filter>Assets</Filter>
     </Image>
-  </ItemGroup>
-  <ItemGroup>
-    <AppxManifest Include="Package.appxmanifest" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\WinUI\opencv_world455d.dll" />
   </ItemGroup>
 </Project>

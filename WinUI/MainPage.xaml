@@ -14,7 +14,7 @@
         <Border
             x:Name="AppTitleBar"
             Height="40"
-            Margin="24,8,0,0"
+            Padding="24,8,0,0"
             VerticalAlignment="Top"
             Background="Transparent"
             Canvas.ZIndex="1"

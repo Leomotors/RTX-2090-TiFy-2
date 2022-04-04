@@ -4,7 +4,8 @@ namespace winrt::RTX_2090_TiFy {
 
 class AppSettings {
   public:
-    static hstring Theme;
+    AppSettings() = delete;
+    static const hstring Theme;
     static int32_t CurrentTheme;
 };
 

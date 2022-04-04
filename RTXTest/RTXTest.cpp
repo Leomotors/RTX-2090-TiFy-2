@@ -3,13 +3,20 @@
 
 #include "GPUConfig.hpp"
 #include "ImageHandler.hpp"
+#include "StringHelper.hpp"
+
+#include <string>
+#include <vector>
+#include <utility>
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace RTXTest {
 
+// clang-format off
 TEST_CLASS(GPUConfigTest) {
-    public : TEST_METHOD(WarpPoints) {
+  public:
+    TEST_METHOD(WarpPoints) {
         auto config = RTXLib::GPUConfig();
         config.output.dims = {69, 420};
         config.output.loops = 5;
@@ -33,10 +40,34 @@ TEST_CLASS(GPUConfigTest) {
 };
 
 TEST_CLASS(ImageHandler) {
-    public : TEST_METHOD(ImageLoading){
+  public:
+    TEST_METHOD(ImageLoading) {
         auto handler = RTXLib::ImageHandler();
         Assert::IsFalse(handler.loadImage("/path/to/not/exist/file"));
     }
 };
 
-}  // namespace wtftest
+TEST_CLASS(StringHelper) {
+  public:
+    BEGIN_TEST_METHOD_ATTRIBUTE(removeFileExtension)
+        
+    END_TEST_METHOD_ATTRIBUTE()
+      
+    TEST_METHOD(removeFileExtension) {
+        const auto testcases = std::vector<std::pair<std::string, std::string>>{
+            {"bruh.jpeg", "bruh"},
+            {"bruh.wtf", "bruh"},
+            {"nevergonnagiveyouup", "nevergonnagiveyouup"},
+            {"stack.overflow.jpeg.lol", "stack.overflow.jpeg"},
+            {"illegalFileName.....", "illegalFileName....."},
+            {"normalButWeird...wtf", "normalButWeird.."},
+            {"", ""},
+        };
+
+        for(const auto& [test, expected] : testcases) {
+            Assert::AreEqual(expected, RTXLib::StringHelper::removeFileExtension(test));
+        }
+    }
+};
+
+}  // namespace RTXTest::RTXLibTest

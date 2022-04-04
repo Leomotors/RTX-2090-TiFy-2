@@ -18,14 +18,21 @@
         </TextBlock>
 
         <StackPanel Orientation="Horizontal">
+
+            <!--  Left Panel - Input  -->
             <StackPanel Padding="10" Orientation="Vertical">
+
                 <TextBlock Style="{StaticResource Header2}">Input Image</TextBlock>
                 <Button Click="SelectInput_Click" FontSize="16">Select Input Image</Button>
                 <TextBlock Margin="0,10,0,5" Style="{StaticResource TextXL}">Image Preview</TextBlock>
-                <muxc:ProgressBar
-                    x:Name="InputLoadProgress"
-                    IsIndeterminate="True"
-                    Visibility="Collapsed" />
+
+                <StackPanel Height="5">
+                    <muxc:ProgressBar
+                        x:Name="InputLoadProgress"
+                        IsIndeterminate="True"
+                        Visibility="Collapsed" />
+                </StackPanel>
+
                 <Border
                     Width="300"
                     Height="300"
@@ -40,8 +47,60 @@
 
             </StackPanel>
 
+            <!--  Right Panel - Output  -->
             <StackPanel Padding="10" Orientation="Vertical">
-                <TextBlock FontSize="69">TODO</TextBlock>
+                <StackPanel.Resources>
+                    <Style BasedOn="{StaticResource ExpanderPanel}" TargetType="RelativePanel">
+                        <Setter Property="Width" Value="500" />
+                        <Setter Property="Background" Value="{ThemeResource ExpanderBackground}" />
+                    </Style>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="FontSize" Value="16" />
+                        <Setter Property="Margin" Value="5,8,0,0" />
+                    </Style>
+                    <Style x:Name="StackRight" TargetType="StackPanel">
+                        <Setter Property="RelativePanel.AlignRightWithPanel" Value="True" />
+                        <Setter Property="Orientation" Value="Horizontal" />
+                    </Style>
+                </StackPanel.Resources>
+
+                <RelativePanel>
+                    <TextBlock Margin="5,8,0,0">
+                        Output File Name
+                    </TextBlock>
+                    <StackPanel Style="{StaticResource StackRight}">
+                        <TextBox
+                            x:Name="OutputFileName"
+                            Width="200"
+                            Margin="0,4,10,0" />
+                        <TextBlock Margin="0,8,0,0">.mp4</TextBlock>
+                    </StackPanel>
+                </RelativePanel>
+
+                <RelativePanel>
+                    <TextBlock>
+                        Output Resolution
+                    </TextBlock>
+                    <StackPanel Orientation="Horizontal" RelativePanel.AlignRightWithPanel="True">
+                        <StackPanel.Resources>
+                            <Style TargetType="muxc:NumberBox">
+                                <Setter Property="Value" Value="480" />
+                                <Setter Property="Minimum" Value="144" />
+                                <Setter Property="Maximum" Value="5120" />
+                                <Setter Property="Margin" Value="0,4,0,0" />
+                            </Style>
+                        </StackPanel.Resources>
+
+                        <muxc:NumberBox />
+                        <FontIcon
+                            Margin="5,5,5,0"
+                            FontFamily="{StaticResource SymbolThemeFontFamily}"
+                            FontSize="14"
+                            Glyph="&#xE947;" />
+                        <muxc:NumberBox />
+                    </StackPanel>
+                </RelativePanel>
+
             </StackPanel>
         </StackPanel>
     </StackPanel>

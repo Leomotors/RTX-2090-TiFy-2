@@ -8,8 +8,9 @@
     <Application.Resources>
         <muxc:XamlControlsResources>
             <muxc:XamlControlsResources.MergedDictionaries>
+                <ResourceDictionary Source="ms-appx:///ComponentStyles.xaml" />
                 <ResourceDictionary Source="ms-appx:///Constants.xaml" />
-                <ResourceDictionary Source="ms-appx:///Styles.xaml" />
+                <ResourceDictionary Source="ms-appx:///TextStyles.xaml" />
                 <ResourceDictionary Source="ms-appx:///VendorStyles.xaml" />
             </muxc:XamlControlsResources.MergedDictionaries>
         </muxc:XamlControlsResources>

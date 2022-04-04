@@ -181,6 +181,9 @@
     <ApplicationDefinition Include="App.xaml">
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="ComponentStyles.xaml">
+      <DeploymentContent>true</DeploymentContent>
+    </Page>
     <Page Include="Constants.xaml">
       <DeploymentContent>true</DeploymentContent>
     </Page>
@@ -199,7 +202,7 @@
     <Page Include="Settings.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Styles.xaml">
+    <Page Include="TextStyles.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Include="VendorStyles.xaml">

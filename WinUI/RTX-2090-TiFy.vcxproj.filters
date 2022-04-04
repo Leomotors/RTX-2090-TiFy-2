@@ -185,7 +185,7 @@
     <Page Include="MainPage.xaml">
       <Filter>src</Filter>
     </Page>
-    <Page Include="Styles.xaml">
+    <Page Include="TextStyles.xaml">
       <Filter>src\Styles</Filter>
     </Page>
     <Page Include="VendorStyles.xaml">
@@ -195,6 +195,9 @@
       <Filter>src\Controls</Filter>
     </Page>
     <Page Include="Constants.xaml">
+      <Filter>src\Styles</Filter>
+    </Page>
+    <Page Include="ComponentStyles.xaml">
       <Filter>src\Styles</Filter>
     </Page>
   </ItemGroup>

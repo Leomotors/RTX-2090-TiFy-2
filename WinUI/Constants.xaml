@@ -10,7 +10,7 @@
 
     <x:String x:Key="MSStoreLink">
         <!--  TEMPORARY  -->
-        https://www.youtube.com/watch?v=dQw4w9WgXcQ
+        ms-windows-store://review/?ProductId=9NJ5TZW6MDGL
     </x:String>
 
 </ResourceDictionary>

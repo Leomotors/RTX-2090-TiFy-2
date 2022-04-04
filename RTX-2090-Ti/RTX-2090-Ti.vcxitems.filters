@@ -3,6 +3,7 @@
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)GPUConfig.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)ImageHandler.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)StringHelper.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)GPUConfig.hpp" />
@@ -11,6 +12,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Macros\opencv.hpp">
       <Filter>Macros</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)StringHelper.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Macros">

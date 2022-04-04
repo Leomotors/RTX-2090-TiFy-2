@@ -5,19 +5,9 @@ using namespace RTXTest;
 using namespace Platform;
 using namespace Windows::ApplicationModel;
 using namespace Windows::ApplicationModel::Activation;
-using namespace Windows::Foundation;
-using namespace Windows::Foundation::Collections;
 using namespace Windows::UI::Xaml;
 using namespace Windows::UI::Xaml::Controls;
-using namespace Windows::UI::Xaml::Controls::Primitives;
-using namespace Windows::UI::Xaml::Data;
-using namespace Windows::UI::Xaml::Input;
-using namespace Windows::UI::Xaml::Interop;
-using namespace Windows::UI::Xaml::Media;
 using namespace Windows::UI::Xaml::Navigation;
-
-// The Blank Application template is documented at
-// https://go.microsoft.com/fwlink/?LinkId=402347&clcid=0x409
 
 /// <summary>
 /// Initializes the singleton application object.  This is the first line of
@@ -35,8 +25,7 @@ App::App() {
 /// specific file.
 /// </summary>
 /// <param name="e">Details about the launch request and process.</param>
-void App::OnLaunched(
-    Windows::ApplicationModel::Activation::LaunchActivatedEventArgs ^ e) {
+void App::OnLaunched(LaunchActivatedEventArgs ^ e) {
     auto rootFrame = dynamic_cast<Frame ^>(Window::Current->Content);
 
     // Do not repeat app initialization when the Window already has content,
@@ -46,9 +35,8 @@ void App::OnLaunched(
         // a SuspensionManager key
         rootFrame = ref new Frame();
 
-        rootFrame->NavigationFailed +=
-            ref new Windows::UI::Xaml::Navigation::NavigationFailedEventHandler(
-                this, &App::OnNavigationFailed);
+        rootFrame->NavigationFailed += ref new NavigationFailedEventHandler(
+            this, &App::OnNavigationFailed);
 
         if (e->PreviousExecutionState ==
             ApplicationExecutionState::Terminated) {
@@ -88,9 +76,7 @@ void App::OnSuspending(Object ^ sender, SuspendingEventArgs ^ e) {
 /// </summary>
 /// <param name="sender">The Frame which failed navigation</param>
 /// <param name="e">Details about the navigation failure</param>
-void App::OnNavigationFailed(
-    Platform::Object ^ sender,
-    Windows::UI::Xaml::Navigation::NavigationFailedEventArgs ^ e) {
+void App::OnNavigationFailed(Object ^ sender, NavigationFailedEventArgs ^ e) {
     throw ref new FailureException("Failed to load Page " +
                                    e->SourcePageType.Name);
 }
