@@ -8,8 +8,6 @@ namespace RTXLib::StringHelper {
 std::string removeFileExtension(std::string filename) {
     int32_t i = static_cast<int32_t>(filename.size()) - 1;
 
-    if (i < 1 || filename[i] == '.') return filename;
-
     for (; i >= 0; i--) {
         if (filename[i] == '.') {
             break;

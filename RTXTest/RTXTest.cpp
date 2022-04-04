@@ -60,7 +60,7 @@ TEST_CLASS(StringHelper) {
             {"bruh.wtf", "bruh"},
             {"nevergonnagiveyouup", "nevergonnagiveyouup"},
             {"stack.overflow.jpeg.lol", "stack.overflow.jpeg"},
-            {"illegalFileName.....", "illegalFileName....."},
+            {"illegalFileName.....", "illegalFileName...."},
             {"normalButWeird...wtf", "normalButWeird.."},
             {"", ""},
         };
@@ -71,4 +71,4 @@ TEST_CLASS(StringHelper) {
     }
 };
 
-}  // namespace RTXTest::RTXLibTest
+}  // namespace RTXTest
