@@ -55,8 +55,8 @@ bool GPUConfig::validateWarpLocations() {
 
     std::random_device rd;
     std::mt19937 gen(rd());
-    std::uniform_int_distribution<int> distribX(0, output.dims.first);
-    std::uniform_int_distribution<int> distribY(0, output.dims.second);
+    std::uniform_int_distribution<int> distribX(0, output.dims.first - 1);
+    std::uniform_int_distribution<int> distribY(0, output.dims.second - 1);
 
     while (passedValidation.size() < output.loops) {
         passedValidation.push_back({distribX(gen), distribY(gen)});

@@ -6,8 +6,8 @@
 #include "StringHelper.hpp"
 
 #include <string>
-#include <vector>
 #include <utility>
+#include <vector>
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -17,25 +17,30 @@ namespace RTXTest {
 TEST_CLASS(GPUConfigTest) {
   public:
     TEST_METHOD(WarpPoints) {
-        auto config = RTXLib::GPUConfig();
-        config.output.dims = {69, 420};
-        config.output.loops = 5;
+        for (int i = 0; i < 1000; i++) {
+            auto config = RTXLib::GPUConfig();
+            config.output.dims = {69, 420};
+            config.output.loops = 5;
 
-        Assert::IsTrue(config.validateWarpLocations());
-        Assert::AreEqual(5, (int)config.warpLocations.size());
+            Assert::IsTrue(
+                config.validateWarpLocations(), L"Warp points should be changed (grow)");
+            Assert::AreEqual(5, static_cast<int32_t>(config.warpLocations.size()));
 
-        for (const auto& [x, y] : config.warpLocations) {
-            Assert::IsTrue(x >= 0);
-            Assert::IsTrue(y >= 0);
-            Assert::IsTrue(x < 69);
-            Assert::IsTrue(y < 420);
+            for (const auto& [x, y] : config.warpLocations) {
+                Assert::IsTrue(x >= 0, L"X is less than 0");
+                Assert::IsTrue(y >= 0, L"Y is less than 0");
+                Assert::IsTrue(x < 69, L"X exceeds the dimension");
+                Assert::IsTrue(y < 420, L"Y exceeds the dimension");
+            }
+
+            config.output.loops = 3;
+            Assert::IsTrue(
+                config.validateWarpLocations(), L"Warp points should be changed (shrink)");
+            Assert::AreEqual(3, (int)config.warpLocations.size());
+
+            Assert::IsFalse(
+                config.validateWarpLocations(), L"Warp points should remained the same");
         }
-
-        config.output.loops = 3;
-        Assert::IsTrue(config.validateWarpLocations());
-        Assert::AreEqual(3, (int)config.warpLocations.size());
-
-        Assert::IsFalse(config.validateWarpLocations());
     }
 };
 
@@ -49,10 +54,6 @@ TEST_CLASS(ImageHandler) {
 
 TEST_CLASS(StringHelper) {
   public:
-    BEGIN_TEST_METHOD_ATTRIBUTE(removeFileExtension)
-        
-    END_TEST_METHOD_ATTRIBUTE()
-      
     TEST_METHOD(removeFileExtension) {
         const auto testcases = std::vector<std::pair<std::string, std::string>>{
             {"bruh.jpeg", "bruh"},
