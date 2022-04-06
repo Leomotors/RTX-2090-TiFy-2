@@ -17,4 +17,6 @@ bool ImageHandler::loadImage(std::string filePath) {
     return true;
 }
 
+bool ImageHandler::ready() { return !image.empty() && !imageGray.empty(); }
+
 }  // namespace RTXLib

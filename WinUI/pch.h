@@ -11,6 +11,7 @@
 #include <winrt/Windows.Foundation.h>
 #include <winrt/Windows.Storage.Pickers.h>
 #include <winrt/Windows.System.h>
+#include <winrt/Windows.UI.Text.h>
 #include <winrt/Windows.UI.ViewManagement.h>
 #include <winrt/Windows.UI.Xaml.Controls.Primitives.h>
 #include <winrt/Windows.UI.Xaml.Controls.h>
@@ -28,3 +29,8 @@
 #include <winrt/Microsoft.UI.Xaml.XamlTypeInfo.h>
 
 #include <Macros/opencv.hpp>
+
+#include <format>
+#include <map>
+#include <string>
+#include <vector>

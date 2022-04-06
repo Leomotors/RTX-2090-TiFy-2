@@ -6,8 +6,31 @@
 #include <vector>
 #include <sstream>
 #include <random>
+#include <optional>
 
 namespace RTXLib {
+
+std::optional<std::string> OutputConfig::validate() {
+    if (path.empty())
+#ifdef _MSC_VER
+        return "Output Path is empty, but UWP Version App will take care of "
+               "the output Path, YOU SHOULD NOT SEE THIS MESSAGE!";
+#else
+        return "Output Path is empty";
+#endif
+
+    if (dims.first < 144 || dims.second < 144)
+        return "Dimensions must be at least 144x144";
+
+    if (fps < 5) return "FPS must be at least 5";
+
+    if (length < 0.5) return "Length per loop must be at least 0.5 seconds";
+
+    if (loops < 1)
+        return "Number of loops less than 1 cannot make the video exist!";
+
+    return std::nullopt;
+}
 
 GPUConfig::GPUConfig() { resetWarpLocations(); }
 
@@ -81,7 +104,7 @@ std::string GPUConfig::warpLocationsAsStr() {
         res += std::to_string(x) + 'x' + std::to_string(y) + '\n';
     }
 
-    if(!res.empty()) res.pop_back();
+    if (!res.empty()) res.pop_back();
 
     return res;
 }

@@ -151,6 +151,9 @@
     <Image Include="Assets\Wide310x150Logo.scale-200.png">
       <Filter>Assets\Logo</Filter>
     </Image>
+    <Image Include="Assets\RTX\RTXOff.png">
+      <Filter>Assets\RTX</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.debug.appxmanifest" />
@@ -165,6 +168,7 @@
       <Filter>gitignored</Filter>
     </None>
     <None Include="Package.StoreAssociation.xml" />
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="README.md" />
@@ -225,6 +229,9 @@
     </Filter>
     <Filter Include="Assets\Logo">
       <UniqueIdentifier>{979da2f1-8a29-45b7-bf9d-aca676e00ad9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets\RTX">
+      <UniqueIdentifier>{cd39f3ba-974e-417b-a764-2aed3816bac3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

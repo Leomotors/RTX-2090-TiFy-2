@@ -18,7 +18,9 @@ namespace winrt::RTX_2090_TiFy::implementation {
 MainPage::MainPage() {
     InitializeComponent();
 
-    auto titleBar = ApplicationView::GetForCurrentView().TitleBar();
+    auto appView = ApplicationView::GetForCurrentView();
+    appView.TryResizeView({1000, 750});
+    auto titleBar = appView.TitleBar();
 
     titleBar.ButtonBackgroundColor(Colors::Transparent());
     titleBar.ButtonInactiveBackgroundColor(Colors::Transparent());

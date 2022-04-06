@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
   <Identity
-    Name="Leomotors.RTX-2090-TiFy"
+    Name="Leomotors.RTX-2090-TiFy.Debug"
     Publisher="CN=Leomotors"
     Version="2.0.100.0" />
   <mp:PhoneIdentity PhoneProductId="66f08c15-baf8-44b9-8257-d178b9b2dd39" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
   <Properties>
-    <DisplayName>RTX 2090 TiFy</DisplayName>
+    <DisplayName>RTX 2090 TiFy (Debug Edition)</DisplayName>
     <PublisherDisplayName>Leomotors</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>

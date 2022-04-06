@@ -19,6 +19,7 @@ class ImageHandler {
     bool status = false;
 
     bool loadImage(std::string filePath);
+    bool ready();
 };
 
 }  // namespace RTXLib

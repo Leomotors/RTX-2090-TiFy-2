@@ -4,11 +4,13 @@
 #include <string>
 #include <utility>
 #include <vector>
+#include <optional>
 
 #include "ImageHandler.hpp"
 
 namespace RTXLib {
 
+// very meme enum
 enum class Algorithm {
     CORGI_LEGACY = 69,
     BRIGHTNESS_COMPENSATE = 420,
@@ -42,12 +44,21 @@ const auto OutputConfigConstraint = std::vector<std::string>{
 
 struct OutputConfig {
     // Ordered according to ConfigLists & ConfigDescription
-    std::string path;
+    std::string path
+#ifdef _MSC_VER
+        = "TEMP"
+#endif
+        ;
     std::pair<int, int> dims = {480, 480};
     int fps = 30;
     double length = 5.5;
     int loops = 6;
     Algorithm algo = Algorithm::BLEND_S;
+    /// <summary>
+    /// Validate the configurations
+    /// </summary>
+    /// <returns>Reason if failed, std::nullopt if pass</returns>
+    std::optional<std::string> validate();
 };
 
 /// <summary>

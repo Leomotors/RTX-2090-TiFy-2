@@ -14,6 +14,8 @@ namespace winrt::RTX_2090_TiFy::implementation {
 struct HomePage : HomePageT<HomePage> {
     HomePage();
 
+    void saveSettings();
+
     std::map<hstring, RTXLib::Algorithm> hstringToAlgorithm;
 
     fire_and_forget SelectInput_Click(IInspectable const& sender,
@@ -23,6 +25,9 @@ struct HomePage : HomePageT<HomePage> {
                                            RoutedEventArgs const& e);
 
     void GenWarp_Click(IInspectable const& sender, RoutedEventArgs const& e);
+    void Validate_Click(IInspectable const& sender, RoutedEventArgs const& e);
+    fire_and_forget Generate_Click(IInspectable const& sender,
+                                   RoutedEventArgs const& e);
 };
 
 }  // namespace winrt::RTX_2090_TiFy::implementation

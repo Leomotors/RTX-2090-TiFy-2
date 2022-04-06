@@ -81,6 +81,7 @@ fire_and_forget Settings::RickRollSwitch_Toggled(IInspectable const&,
             Uri(AppConstants::URLToHeaven));
 
     toggle.IsOn(false);
+    RickRollInfo().IsOpen(true);
 }
 
 fire_and_forget Settings::Restart_Click(IInspectable const& sender,

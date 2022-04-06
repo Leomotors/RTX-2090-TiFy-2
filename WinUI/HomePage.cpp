@@ -9,6 +9,8 @@
 #include "GPUConfig.hpp"
 #include "StringHelper.hpp"
 
+#include <format>
+
 using namespace winrt;
 using namespace Windows::UI::Xaml;
 
@@ -16,15 +18,14 @@ namespace winrt::RTX_2090_TiFy::implementation {
 
 HomePage::HomePage() {
     InitializeComponent();
-        
-    const auto& output = AppState::GPUConfig.output;
 
+    const auto& output = AppState::GPUConfig.output;
     OutputDimX().Value(output.dims.first);
     OutputDimY().Value(output.dims.second);
     OutputFPS().Value(output.fps);
     OutputLoopLen().Value(output.length);
     OutputLoopCount().Value(output.loops);
-    
+
     for (const auto& [val, name] : RTXLib::AlgoEnumToString) {
         auto nameh = to_hstring(name);
         hstringToAlgorithm[nameh] = val;
@@ -34,6 +35,17 @@ HomePage::HomePage() {
             OutputAlgorithm().SelectedItem(box_value(nameh));
         }
     }
+}
+
+void HomePage::saveSettings() {
+    auto& output = AppState::GPUConfig.output;
+    output.dims.first = static_cast<int32_t>(OutputDimX().Value());
+    output.dims.second = static_cast<int32_t>(OutputDimY().Value());
+    output.fps = static_cast<int32_t>(OutputFPS().Value());
+    output.length = OutputLoopLen().Value();
+    output.loops = static_cast<int32_t>(OutputLoopCount().Value());
+    output.algo =
+        hstringToAlgorithm[OutputAlgorithm().SelectedItem().as<hstring>()];
 }
 
 fire_and_forget HomePage::SelectInput_Click(IInspectable const& sender,
@@ -77,6 +89,9 @@ fire_and_forget HomePage::AdvancedSettings_Click(IInspectable const& sender,
                                                  RoutedEventArgs const& e) {
     using namespace Windows::UI::Xaml::Controls;
 
+    saveSettings();
+    AppState::GPUConfig.validateWarpLocations();
+
     WarpPointsTextBox().Text(
         to_hstring(AppState::GPUConfig.warpLocationsAsStr()));
 
@@ -88,11 +103,69 @@ fire_and_forget HomePage::AdvancedSettings_Click(IInspectable const& sender,
     }
 }
 
-void HomePage::GenWarp_Click(IInspectable const&,
-                             RoutedEventArgs const&) {
+void HomePage::GenWarp_Click(IInspectable const&, RoutedEventArgs const&) {
     AppState::GPUConfig.resetWarpLocations();
     WarpPointsTextBox().Text(
         to_hstring(AppState::GPUConfig.warpLocationsAsStr()));
+}
+
+void HomePage::Validate_Click(IInspectable const&, RoutedEventArgs const&) {
+    AppState::GPUConfig.setWarpLocations(to_string(WarpPointsTextBox().Text()));
+    WarpPointsTextBox().Text(
+        to_hstring(AppState::GPUConfig.warpLocationsAsStr()));
+}
+
+fire_and_forget HomePage::Generate_Click(IInspectable const&,
+                                         RoutedEventArgs const&) {
+    using namespace Windows::UI::Xaml::Controls;
+    using namespace Windows::Storage;
+
+    saveSettings();
+
+    AppState::GPUConfig.validateWarpLocations();
+
+    auto failReason = AppState::validate();
+    if (failReason.has_value()) {
+        auto dialog = ContentDialog();
+        dialog.Title(box_value(L"NOT RTX READY"));
+
+        auto stack = StackPanel();
+
+        auto image = Image();
+        image.Source(Media::Imaging::BitmapImage(
+            Uri(L"ms-appx:///Assets/RTX/RTXOff.png")));
+        image.Margin(ThicknessHelper::FromLengths(0, 10, 0, 10));
+
+        auto text = TextBlock();
+        text.Text(L"Reason: " + to_hstring(failReason.value()));
+        text.FontSize(20);
+        text.FontWeight(Windows::UI::Text::FontWeights::Medium());
+        text.TextWrapping(TextWrapping::Wrap);
+
+        stack.Children().Append(image);
+        stack.Children().Append(text);
+
+        dialog.Content(stack);
+        dialog.DefaultButton(ContentDialogButton::Close);
+        dialog.CloseButtonText(L"Okay");
+        co_await dialog.ShowAsync();
+        co_return;
+    }
+
+    auto tmpFolder = ApplicationData::Current().TemporaryFolder();
+    auto outFolder = co_await tmpFolder.CreateFolderAsync(
+        L"output", CreationCollisionOption::OpenIfExists);
+
+    auto videoName = OutputFileName().Text();
+    videoName =
+        videoName.empty() ? OutputFileName().PlaceholderText() : videoName;
+    auto videoPath = std::format(L"{}\\{}.mp4", outFolder.Path(), videoName);
+
+    auto dialog = ContentDialog();
+    dialog.Title(box_value(L"TEST"));
+    dialog.Content(box_value(videoPath));
+    dialog.CloseButtonText(L"TEST");
+    co_await dialog.ShowAsync();
 }
 
 }  // namespace winrt::RTX_2090_TiFy::implementation
