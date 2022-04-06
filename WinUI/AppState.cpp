@@ -4,6 +4,7 @@
 namespace winrt::RTX_2090_TiFy {
 
 RTXLib::ImageHandler AppState::ImageHandler;
+RTXLib::GPUConfig AppState::GPUConfig;
 
 bool AppState::IsLightTheme() {
     using namespace Windows::UI::Xaml;

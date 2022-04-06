@@ -16,7 +16,7 @@ namespace RTXTest {
 // clang-format off
 TEST_CLASS(GPUConfigTest) {
   public:
-    TEST_METHOD(WarpPoints) {
+    TEST_METHOD(WarpPointsValidateAndGen) {
         for (int i = 0; i < 1000; i++) {
             auto config = RTXLib::GPUConfig();
             config.output.dims = {69, 420};
@@ -42,33 +42,61 @@ TEST_CLASS(GPUConfigTest) {
                 config.validateWarpLocations(), L"Warp points should remained the same");
         }
     }
+
+    TEST_METHOD(warpLocationsAsStr) {
+        auto config = RTXLib::GPUConfig();
+
+    // clang-format on
+    const auto testcases =
+        std::vector<std::pair<std::vector<std::pair<int, int>>, std::string>>({
+            {{{0, 0}, {1, 1}, {2, 2}}, "0x0\n1x1\n2x2"},
+            {{}, {""}},
+            {{{5, 32}, {4, 47}}, "5x32\n4x47"},
+        });
+    // clang-format off
+
+        for(const auto& [points, expected] : testcases) {
+            config.warpLocations = points;
+            Assert::AreEqual(expected, config.warpLocationsAsStr());
+        }
+    }
 };
 
 TEST_CLASS(ImageHandler) {
   public:
-    TEST_METHOD(ImageLoading) {
+    TEST_METHOD(ImageLoadingAndInitialize) {
         auto handler = RTXLib::ImageHandler();
-        Assert::IsFalse(handler.loadImage("/path/to/not/exist/file"));
+        Assert::IsFalse(
+            handler.loadImage("/path/to/not/exist/file"),
+            L"Returns true when loading non existing files");
+        Assert::IsTrue(handler.loadImage(
+            "./Assets/StoreLogo.png"),
+            L"Returns false when load existing files");
+        Assert::IsFalse(handler.imageGray.empty(), L"ImageGray is empty");
     }
 };
 
 TEST_CLASS(StringHelper) {
   public:
     TEST_METHOD(removeFileExtension) {
-        const auto testcases = std::vector<std::pair<std::string, std::string>>{
-            {"bruh.jpeg", "bruh"},
-            {"bruh.wtf", "bruh"},
-            {"nevergonnagiveyouup", "nevergonnagiveyouup"},
-            {"stack.overflow.jpeg.lol", "stack.overflow.jpeg"},
-            {"illegalFileName.....", "illegalFileName....."},
-            {"normalButWeird...wtf", "normalButWeird...wtf"},
-            {"", ""},
-            {"Caffe Latte Caffe Mocha Cappuchino", "Caffe Latte Caffe Mocha Cappuchino"},
-            {"e", "e"},
-            {"...", "..."}
-        };
 
-        for(const auto& [test, expected] : testcases) {
+    // clang-format on
+    const auto testcases = std::vector<std::pair<std::string, std::string>>{
+        {"bruh.jpeg", "bruh"},
+        {"bruh.wtf", "bruh"},
+        {"nevergonnagiveyouup", "nevergonnagiveyouup"},
+        {"stack.overflow.jpeg.lol", "stack.overflow.jpeg"},
+        {"illegalFileName.....", "illegalFileName....."},
+        {"normalButWeird...wtf", "normalButWeird...wtf"},
+        {"", ""},
+        {"Caffe Latte Caffe Mocha Cappuchino",
+         "Caffe Latte Caffe Mocha Cappuchino"},
+        {"e", "e"},
+        {"...", "..."},
+        {"a.b.c.d.e.f", "a.b.c.d.e"}};
+// clang-format off
+
+        for (const auto& [test, expected] : testcases) {
             Assert::AreEqual(expected, RTXLib::StringHelper::removeFileExtension(test));
         }
     }

@@ -9,6 +9,8 @@
 
 namespace RTXLib {
 
+GPUConfig::GPUConfig() { resetWarpLocations(); }
+
 bool GPUConfig::setOutputDims(std::pair<int, int> newDims) {
     output.dims = newDims;
 
@@ -42,7 +44,7 @@ bool GPUConfig::validateWarpLocations() {
     bool changed = false;
     bool changed2 = output.loops != warpLocations.size();
 
-    for (const auto &[x, y] : warpLocations) {
+    for (const auto& [x, y] : warpLocations) {
         if (x >= 0 && x < output.dims.first && y >= 0 &&
             y < output.dims.second) {
             passedValidation.push_back({x, y});
@@ -65,6 +67,23 @@ bool GPUConfig::validateWarpLocations() {
     warpLocations = std::move(passedValidation);
 
     return changed || changed2;
+}
+
+void GPUConfig::resetWarpLocations() {
+    warpLocations.clear();
+    validateWarpLocations();
+}
+
+std::string GPUConfig::warpLocationsAsStr() {
+    std::string res = "";
+
+    for (const auto& [x, y] : warpLocations) {
+        res += std::to_string(x) + 'x' + std::to_string(y) + '\n';
+    }
+
+    if(!res.empty()) res.pop_back();
+
+    return res;
 }
 
 }  // namespace RTXLib

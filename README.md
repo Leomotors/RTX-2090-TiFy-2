@@ -11,10 +11,12 @@ _work in progress_
 - RTXTest -> Unit Test App with MSTest
   <br/><br/>
 - WinUI -> UI for Windows with winrt + WinUI2 (because 3 does not have Mica)
-- wxWidgets? -> UI for Linux with wxWidgets (GTK3)
+- \<Undecided library\> -> UI for Linux
 
 ## Developing - Windows
 
-- opencv_world455.dll and opencv_world455d.dll should exists at /WinUI
+- Run preprocess.js with node
 
-Note: Many components are reused, lol
+- Set OpenCV_DIR to OpenCV's Directory
+
+- opencv_world455.dll and opencv_world455d.dll should exists at /WinUI

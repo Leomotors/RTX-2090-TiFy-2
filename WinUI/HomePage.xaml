@@ -8,7 +8,6 @@
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     mc:Ignorable="d">
 
-
     <StackPanel>
         <TextBlock
             FontSize="32"
@@ -36,15 +35,15 @@
                 </StackPanel>
 
                 <Border
-                    Width="300"
-                    Height="300"
+                    Width="390"
+                    Height="390"
                     BorderBrush="{ThemeResource ButtonDisabledBorderThemeBrush}"
                     BorderThickness="1"
                     CornerRadius="3">
                     <Image
                         x:Name="InputImage"
-                        Width="300"
-                        Height="300" />
+                        Width="390"
+                        Height="390" />
                 </Border>
 
             </StackPanel>
@@ -66,8 +65,9 @@
                         <Setter Property="RelativePanel.AlignRightWithPanel" Value="True" />
                         <Setter Property="Orientation" Value="Horizontal" />
                     </Style>
-                    <Style TargetType="muxc:NumberBox">
-                        <Setter Property="Margin" Value="0,4,0,0" />
+                    <Style x:Key="ItemRight" TargetType="Control">
+                        <Setter Property="Margin" Value="0,3,0,0" />
+                        <Setter Property="RelativePanel.AlignRightWithPanel" Value="True" />
                     </Style>
                 </StackPanel.Resources>
 
@@ -93,20 +93,19 @@
                     <StackPanel Orientation="Horizontal" RelativePanel.AlignRightWithPanel="True">
                         <StackPanel.Resources>
                             <Style TargetType="muxc:NumberBox">
-                                <Setter Property="Value" Value="480" />
                                 <Setter Property="Minimum" Value="144" />
                                 <Setter Property="Maximum" Value="5120" />
                                 <Setter Property="Margin" Value="0,4,0,0" />
                             </Style>
                         </StackPanel.Resources>
 
-                        <muxc:NumberBox />
+                        <muxc:NumberBox x:Name="OutputDimX" />
                         <FontIcon
                             Margin="5,5,5,0"
                             FontFamily="{StaticResource SymbolThemeFontFamily}"
                             FontSize="14"
                             Glyph="&#xE947;" />
-                        <muxc:NumberBox />
+                        <muxc:NumberBox x:Name="OutputDimY" />
                     </StackPanel>
                 </RelativePanel>
 
@@ -115,11 +114,11 @@
                         Video FPS
                     </TextBlock>
                     <muxc:NumberBox
+                        x:Name="OutputFPS"
                         Maximum="360"
                         Minimum="5"
-                        RelativePanel.AlignRightWithPanel="True"
                         SpinButtonPlacementMode="Inline"
-                        Value="30" />
+                        Style="{StaticResource ItemRight}" />
                 </RelativePanel>
 
                 <RelativePanel>
@@ -127,12 +126,12 @@
                         Video Length Per Loop
                     </TextBlock>
                     <muxc:NumberBox
+                        x:Name="OutputLoopLen"
                         Maximum="120"
                         Minimum="0.5"
-                        RelativePanel.AlignRightWithPanel="True"
-                        SmallChange="0.1"
+                        SmallChange="0.2"
                         SpinButtonPlacementMode="Inline"
-                        Value="5.5" />
+                        Style="{StaticResource ItemRight}" />
                 </RelativePanel>
 
                 <RelativePanel>
@@ -140,11 +139,11 @@
                         Number of Loops
                     </TextBlock>
                     <muxc:NumberBox
+                        x:Name="OutputLoopCount"
                         Maximum="120"
                         Minimum="1"
-                        RelativePanel.AlignRightWithPanel="True"
                         SpinButtonPlacementMode="Inline"
-                        Value="6" />
+                        Style="{StaticResource ItemRight}" />
                 </RelativePanel>
 
                 <RelativePanel>
@@ -152,10 +151,59 @@
                         Rendering Algorithm
                     </TextBlock>
                     <ComboBox
-                        x:Name="OAlgorithm"
+                        x:Name="OutputAlgorithm"
                         MaxWidth="250"
+                        Margin="0,3,0,0"
                         RelativePanel.AlignRightWithPanel="True" />
                 </RelativePanel>
+
+                <Button
+                    Margin="0,10"
+                    Padding="20,8"
+                    Click="AdvancedSettings_Click"
+                    FontSize="16"
+                    FontWeight="Medium"
+                    Style="{StaticResource AccentButtonStyle}">
+                    Advanced Settings
+                </Button>
+
+                <ContentDialog
+                    x:Name="AdvancedSettingsDialog"
+                    Width="0"
+                    Height="0"
+                    CloseButtonText="Close"
+                    DefaultButton="Primary"
+                    PrimaryButtonText="Done">
+
+                    <ContentDialog.Title>
+                        Advanced Settings: Warp Points
+                    </ContentDialog.Title>
+
+                    <ScrollViewer>
+                        <StackPanel>
+                            <TextBlock FontSize="16" TextWrapping="Wrap">
+                                Input warp points in format of 480x480, seperated by any whitespace.
+                            </TextBlock>
+                            <TextBox
+                                x:Name="WarpPointsTextBox"
+                                Margin="0,20"
+                                AcceptsReturn="True"
+                                TextWrapping="Wrap" />
+                            <Button Padding="10,5" Click="GenWarp_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <FontIcon
+                                        FontFamily="{StaticResource SymbolThemeFontFamily}"
+                                        FontSize="16"
+                                        Glyph="&#xE895;" />
+                                    <TextBlock Margin="5,0">
+                                        Regenerate Warp Points
+                                    </TextBlock>
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+                    </ScrollViewer>
+
+                </ContentDialog>
 
             </StackPanel>
         </StackPanel>

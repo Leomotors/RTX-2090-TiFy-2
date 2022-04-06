@@ -36,8 +36,6 @@ const auto AlgoEnumToString = std::map<Algorithm, std::string>{
     {Algorithm::CORGI_HSV, "Corgi HIV"},
     {Algorithm::BLEND_S, "Blend Sukhoi"}};
 
-const auto defaultAlgorithm = Algorithm::BLEND_S;
-
 const auto OutputConfigConstraint = std::vector<std::string>{
     "Path must not be empty!", "Dimension must ...", "FPS must be at least 1",
     "Length must be at least 1 seconds", "Number of loops must be at least 1"};
@@ -48,8 +46,8 @@ struct OutputConfig {
     std::pair<int, int> dims = {480, 480};
     int fps = 30;
     double length = 5.5;
-    int loops = 1;
-    Algorithm algo = defaultAlgorithm;
+    int loops = 6;
+    Algorithm algo = Algorithm::BLEND_S;
 };
 
 /// <summary>
@@ -60,6 +58,7 @@ struct OutputConfig {
 /// </summary>
 class GPUConfig {
   public:
+    GPUConfig();
     std::string inputPath;
     OutputConfig output;
     std::vector<std::pair<int, int>> warpLocations;
@@ -74,6 +73,8 @@ class GPUConfig {
     /// </summary>
     /// <returns>true if warp locations is changed</returns>
     bool validateWarpLocations();
+    void resetWarpLocations();
+    std::string warpLocationsAsStr();
 };
 
 }  // namespace RTXLib

@@ -45,7 +45,9 @@
             PaneDisplayMode="Top"
             SelectionChanged="NavigationView_SelectionChanged">
             <muxc:NavigationView.MenuItems>
-                <muxc:NavigationViewItem Margin="10,0,0,0" IsSelected="True">Home</muxc:NavigationViewItem>
+                <muxc:NavigationViewItem Margin="10,0,0,0" IsSelected="True">
+                    Home
+                </muxc:NavigationViewItem>
             </muxc:NavigationView.MenuItems>
 
             <ScrollViewer Padding="30,10">

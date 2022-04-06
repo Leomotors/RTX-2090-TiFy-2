@@ -16,14 +16,22 @@ namespace winrt::RTX_2090_TiFy::implementation {
 
 HomePage::HomePage() {
     InitializeComponent();
+        
+    const auto& output = AppState::GPUConfig.output;
+
+    OutputDimX().Value(output.dims.first);
+    OutputDimY().Value(output.dims.second);
+    OutputFPS().Value(output.fps);
+    OutputLoopLen().Value(output.length);
+    OutputLoopCount().Value(output.loops);
     
     for (const auto& [val, name] : RTXLib::AlgoEnumToString) {
         auto nameh = to_hstring(name);
         hstringToAlgorithm[nameh] = val;
-        OAlgorithm().Items().Append(box_value(nameh));
+        OutputAlgorithm().Items().Append(box_value(nameh));
 
-        if (val == RTXLib::defaultAlgorithm) {
-            OAlgorithm().SelectedItem(box_value(nameh));
+        if (val == output.algo) {
+            OutputAlgorithm().SelectedItem(box_value(nameh));
         }
     }
 }
@@ -63,6 +71,28 @@ fire_and_forget HomePage::SelectInput_Click(IInspectable const& sender,
         RTXLib::StringHelper::removeFileExtension(to_string(file.Name()))));
 
     InputLoadProgress().Visibility(Visibility::Collapsed);
+}
+
+fire_and_forget HomePage::AdvancedSettings_Click(IInspectable const& sender,
+                                                 RoutedEventArgs const& e) {
+    using namespace Windows::UI::Xaml::Controls;
+
+    WarpPointsTextBox().Text(
+        to_hstring(AppState::GPUConfig.warpLocationsAsStr()));
+
+    auto result = co_await AdvancedSettingsDialog().ShowAsync();
+
+    if (result == ContentDialogResult::Primary) {
+        AppState::GPUConfig.setWarpLocations(
+            to_string(WarpPointsTextBox().Text()));
+    }
+}
+
+void HomePage::GenWarp_Click(IInspectable const&,
+                             RoutedEventArgs const&) {
+    AppState::GPUConfig.resetWarpLocations();
+    WarpPointsTextBox().Text(
+        to_hstring(AppState::GPUConfig.warpLocationsAsStr()));
 }
 
 }  // namespace winrt::RTX_2090_TiFy::implementation
