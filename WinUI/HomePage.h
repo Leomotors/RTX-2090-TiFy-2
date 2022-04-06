@@ -8,6 +8,7 @@
 using namespace winrt;
 using namespace Windows::Foundation;
 using namespace Windows::UI::Xaml;
+using namespace Windows::UI::Xaml::Controls;
 
 namespace winrt::RTX_2090_TiFy::implementation {
 
@@ -16,6 +17,7 @@ struct HomePage : HomePageT<HomePage> {
 
     void saveSettings();
 
+    bool verifyGuard = false;
     std::map<hstring, RTXLib::Algorithm> hstringToAlgorithm;
 
     fire_and_forget SelectInput_Click(IInspectable const& sender,
@@ -23,6 +25,9 @@ struct HomePage : HomePageT<HomePage> {
 
     fire_and_forget AdvancedSettings_Click(IInspectable const& sender,
                                            RoutedEventArgs const& e);
+
+    void WarpPointsTextBox_TextChanged(IInspectable const& sender,
+                                       TextChangedEventArgs const& e);
 
     void GenWarp_Click(IInspectable const& sender, RoutedEventArgs const& e);
     void Validate_Click(IInspectable const& sender, RoutedEventArgs const& e);

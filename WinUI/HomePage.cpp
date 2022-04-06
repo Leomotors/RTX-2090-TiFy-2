@@ -13,6 +13,7 @@
 
 using namespace winrt;
 using namespace Windows::UI::Xaml;
+using namespace Windows::UI::Xaml::Controls;
 
 namespace winrt::RTX_2090_TiFy::implementation {
 
@@ -87,13 +88,13 @@ fire_and_forget HomePage::SelectInput_Click(IInspectable const& sender,
 
 fire_and_forget HomePage::AdvancedSettings_Click(IInspectable const& sender,
                                                  RoutedEventArgs const& e) {
-    using namespace Windows::UI::Xaml::Controls;
-
     saveSettings();
     AppState::GPUConfig.validateWarpLocations();
 
     WarpPointsTextBox().Text(
         to_hstring(AppState::GPUConfig.warpLocationsAsStr()));
+
+    ValidateSuccessIcon().Visibility(Visibility::Collapsed);
 
     auto result = co_await AdvancedSettingsDialog().ShowAsync();
 
@@ -103,21 +104,30 @@ fire_and_forget HomePage::AdvancedSettings_Click(IInspectable const& sender,
     }
 }
 
+void HomePage::WarpPointsTextBox_TextChanged(IInspectable const&,
+                                             TextChangedEventArgs const&) {
+    if (!verifyGuard) ValidateSuccessIcon().Visibility(Visibility::Collapsed);
+    verifyGuard = false;
+}
+
 void HomePage::GenWarp_Click(IInspectable const&, RoutedEventArgs const&) {
     AppState::GPUConfig.resetWarpLocations();
+    verifyGuard = true;
     WarpPointsTextBox().Text(
         to_hstring(AppState::GPUConfig.warpLocationsAsStr()));
+    ValidateSuccessIcon().Visibility(Visibility::Visible);
 }
 
 void HomePage::Validate_Click(IInspectable const&, RoutedEventArgs const&) {
     AppState::GPUConfig.setWarpLocations(to_string(WarpPointsTextBox().Text()));
+    verifyGuard = true;
     WarpPointsTextBox().Text(
         to_hstring(AppState::GPUConfig.warpLocationsAsStr()));
+    ValidateSuccessIcon().Visibility(Visibility::Visible);
 }
 
 fire_and_forget HomePage::Generate_Click(IInspectable const&,
                                          RoutedEventArgs const&) {
-    using namespace Windows::UI::Xaml::Controls;
     using namespace Windows::Storage;
 
     saveSettings();

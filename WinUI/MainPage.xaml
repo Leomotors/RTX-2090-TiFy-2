@@ -46,7 +46,7 @@
             SelectionChanged="NavigationView_SelectionChanged">
             <muxc:NavigationView.MenuItems>
                 <muxc:NavigationViewItem Margin="10,0,0,0" IsSelected="True">
-                    Home
+                    Control Center
                 </muxc:NavigationViewItem>
             </muxc:NavigationView.MenuItems>
 

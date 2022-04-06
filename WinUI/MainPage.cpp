@@ -61,16 +61,12 @@ void MainPage::NavigationView_SelectionChanged(
     Microsoft::UI::Xaml::Controls::NavigationView const& sender,
     Microsoft::UI::Xaml::Controls::
         NavigationViewSelectionChangedEventArgs const& args) {
-    auto nav = sender.as<Microsoft::UI::Xaml::Controls::NavigationView>();
-    nav.IsBackEnabled(true);
-
     if (args.IsSettingsSelected()) {
         ContentFrame().Navigate(xaml_typename<Settings>());
         return;
     }
 
     ContentFrame().Navigate(xaml_typename<HomePage>());
-    nav.IsBackEnabled(ContentFrame().CanGoBack());
 }
 
 }  // namespace winrt::RTX_2090_TiFy::implementation

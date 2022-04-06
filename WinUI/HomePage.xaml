@@ -59,7 +59,7 @@
                     </Style>
                     <Style TargetType="TextBlock">
                         <Setter Property="FontSize" Value="16" />
-                        <Setter Property="Margin" Value="5,8,0,0" />
+                        <Setter Property="Margin" Value="-5,8,0,0" />
                     </Style>
                     <Style x:Name="StackRight" TargetType="StackPanel">
                         <Setter Property="RelativePanel.AlignRightWithPanel" Value="True" />
@@ -193,13 +193,17 @@
 
                     <ScrollViewer>
                         <StackPanel>
-                            <TextBlock FontSize="16" TextWrapping="Wrap">
+                            <TextBlock
+                                Margin="0"
+                                FontSize="16"
+                                TextWrapping="Wrap">
                                 Input warp points in format of 69x420, seperated by any whitespace.
                             </TextBlock>
                             <TextBox
                                 x:Name="WarpPointsTextBox"
                                 Margin="0,20"
                                 AcceptsReturn="True"
+                                TextChanged="WarpPointsTextBox_TextChanged"
                                 TextWrapping="Wrap" />
                             <StackPanel Orientation="Horizontal">
                                 <Button Padding="10,5" Click="GenWarp_Click">
@@ -227,6 +231,13 @@
                                         </TextBlock>
                                     </StackPanel>
                                 </Button>
+                                <FontIcon
+                                    x:Name="ValidateSuccessIcon"
+                                    FontFamily="{StaticResource SymbolThemeFontFamily}"
+                                    FontSize="28"
+                                    Foreground="{ThemeResource InfoBarSuccessSeverityIconBackground}"
+                                    Glyph="&#xE73E;"
+                                    Visibility="Collapsed" />
                             </StackPanel>
                         </StackPanel>
                     </ScrollViewer>
