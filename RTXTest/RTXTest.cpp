@@ -60,9 +60,12 @@ TEST_CLASS(StringHelper) {
             {"bruh.wtf", "bruh"},
             {"nevergonnagiveyouup", "nevergonnagiveyouup"},
             {"stack.overflow.jpeg.lol", "stack.overflow.jpeg"},
-            {"illegalFileName.....", "illegalFileName...."},
-            {"normalButWeird...wtf", "normalButWeird.."},
+            {"illegalFileName.....", "illegalFileName....."},
+            {"normalButWeird...wtf", "normalButWeird...wtf"},
             {"", ""},
+            {"Caffe Latte Caffe Mocha Cappuchino", "Caffe Latte Caffe Mocha Cappuchino"},
+            {"e", "e"},
+            {"...", "..."}
         };
 
         for(const auto& [test, expected] : testcases) {
@@ -71,4 +74,5 @@ TEST_CLASS(StringHelper) {
     }
 };
 
+// clang-format on
 }  // namespace RTXTest

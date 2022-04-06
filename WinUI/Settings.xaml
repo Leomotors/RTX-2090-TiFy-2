@@ -52,25 +52,23 @@
             <muxc:Expander.Content>
                 <!--  Copied from You are a Failure  -->
                 <StackPanel Padding="30,0">
-                    <Border
-                        x:Name="ThemeChangeAlertBorder"
+                    <muxc:InfoBar
+                        x:Name="ThemeChangeAlert"
+                        Title="You need to restart the app to apply the changes"
                         Margin="-4,0,0,0"
-                        CornerRadius="6"
-                        Visibility="Collapsed">
-                        <StackPanel Padding="20" Orientation="Horizontal">
-                            <FontIcon
-                                x:Name="ThemeChangeAlertIcon"
-                                FontFamily="{StaticResource SymbolThemeFontFamily}"
-                                Glyph="&#xF167;" />
-                            <TextBlock
-                                Margin="10,0"
-                                FontSize="16"
-                                FontWeight="Medium"
-                                TextWrapping="Wrap">
-                                You need to restart the app to apply the changes
-                            </TextBlock>
-                        </StackPanel>
-                    </Border>
+                        IsClosable="False"
+                        IsOpen="False"
+                        Severity="Warning">
+                        <muxc:InfoBar.ActionButton>
+                            <Button
+                                Margin="0"
+                                Padding="8,5"
+                                Click="Restart_Click"
+                                FontSize="14">
+                                Restart
+                            </Button>
+                        </muxc:InfoBar.ActionButton>
+                    </muxc:InfoBar>
 
                     <muxc:RadioButtons
                         Loaded="ThemeSelector_Loaded"

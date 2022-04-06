@@ -24,7 +24,9 @@
 
                 <TextBlock Style="{StaticResource Header2}">Input Image</TextBlock>
                 <Button Click="SelectInput_Click" FontSize="16">Select Input Image</Button>
-                <TextBlock Margin="0,10,0,5" Style="{StaticResource TextXL}">Image Preview</TextBlock>
+                <TextBlock Margin="0,10,0,5" Style="{StaticResource TextXL}">
+                    Input Preview
+                </TextBlock>
 
                 <StackPanel Height="5">
                     <muxc:ProgressBar
@@ -53,6 +55,8 @@
                     <Style BasedOn="{StaticResource ExpanderPanel}" TargetType="RelativePanel">
                         <Setter Property="Width" Value="500" />
                         <Setter Property="Background" Value="{ThemeResource ExpanderBackground}" />
+                        <Setter Property="BorderBrush" Value="{ThemeResource ExpanderHeaderBorderBrush}" />
+                        <Setter Property="BorderThickness" Value="{ThemeResource ExpanderHeaderBorderThickness}" />
                     </Style>
                     <Style TargetType="TextBlock">
                         <Setter Property="FontSize" Value="16" />
@@ -62,10 +66,15 @@
                         <Setter Property="RelativePanel.AlignRightWithPanel" Value="True" />
                         <Setter Property="Orientation" Value="Horizontal" />
                     </Style>
+                    <Style TargetType="muxc:NumberBox">
+                        <Setter Property="Margin" Value="0,4,0,0" />
+                    </Style>
                 </StackPanel.Resources>
 
+                <TextBlock Style="{StaticResource Header2}">Output Configuration</TextBlock>
+
                 <RelativePanel>
-                    <TextBlock Margin="5,8,0,0">
+                    <TextBlock>
                         Output File Name
                     </TextBlock>
                     <StackPanel Style="{StaticResource StackRight}">
@@ -99,6 +108,53 @@
                             Glyph="&#xE947;" />
                         <muxc:NumberBox />
                     </StackPanel>
+                </RelativePanel>
+
+                <RelativePanel>
+                    <TextBlock>
+                        Video FPS
+                    </TextBlock>
+                    <muxc:NumberBox
+                        Maximum="360"
+                        Minimum="5"
+                        RelativePanel.AlignRightWithPanel="True"
+                        SpinButtonPlacementMode="Inline"
+                        Value="30" />
+                </RelativePanel>
+
+                <RelativePanel>
+                    <TextBlock>
+                        Video Length Per Loop
+                    </TextBlock>
+                    <muxc:NumberBox
+                        Maximum="120"
+                        Minimum="0.5"
+                        RelativePanel.AlignRightWithPanel="True"
+                        SmallChange="0.1"
+                        SpinButtonPlacementMode="Inline"
+                        Value="5.5" />
+                </RelativePanel>
+
+                <RelativePanel>
+                    <TextBlock>
+                        Number of Loops
+                    </TextBlock>
+                    <muxc:NumberBox
+                        Maximum="120"
+                        Minimum="1"
+                        RelativePanel.AlignRightWithPanel="True"
+                        SpinButtonPlacementMode="Inline"
+                        Value="6" />
+                </RelativePanel>
+
+                <RelativePanel>
+                    <TextBlock>
+                        Rendering Algorithm
+                    </TextBlock>
+                    <ComboBox
+                        x:Name="OAlgorithm"
+                        MaxWidth="250"
+                        RelativePanel.AlignRightWithPanel="True" />
                 </RelativePanel>
 
             </StackPanel>

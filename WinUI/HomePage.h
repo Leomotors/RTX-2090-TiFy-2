@@ -2,6 +2,9 @@
 
 #include "HomePage.g.h"
 
+#include <map>
+#include "GPUConfig.hpp"
+
 using namespace winrt;
 using namespace Windows::Foundation;
 using namespace Windows::UI::Xaml;
@@ -10,6 +13,8 @@ namespace winrt::RTX_2090_TiFy::implementation {
 
 struct HomePage : HomePageT<HomePage> {
     HomePage();
+
+    std::map<hstring,RTXLib::Algorithm> hstringToAlgorithm;
 
     fire_and_forget SelectInput_Click(IInspectable const& sender,
                                       RoutedEventArgs const& e);

@@ -24,6 +24,9 @@ struct Settings : SettingsT<Settings> {
 
     fire_and_forget RickRollSwitch_Toggled(IInspectable const& sender,
                                            Controls::ToggleSwitch const& e);
+
+    fire_and_forget Restart_Click(IInspectable const& sender,
+                                  RoutedEventArgs const& e);
 };
 
 }  // namespace winrt::RTX_2090_TiFy::implementation

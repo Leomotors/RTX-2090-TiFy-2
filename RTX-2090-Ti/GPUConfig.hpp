@@ -36,6 +36,8 @@ const auto AlgoEnumToString = std::map<Algorithm, std::string>{
     {Algorithm::CORGI_HSV, "Corgi HIV"},
     {Algorithm::BLEND_S, "Blend Sukhoi"}};
 
+const auto defaultAlgorithm = Algorithm::BLEND_S;
+
 const auto OutputConfigConstraint = std::vector<std::string>{
     "Path must not be empty!", "Dimension must ...", "FPS must be at least 1",
     "Length must be at least 1 seconds", "Number of loops must be at least 1"};
@@ -47,7 +49,7 @@ struct OutputConfig {
     int fps = 30;
     double length = 5.5;
     int loops = 1;
-    Algorithm algo = Algorithm::BLEND_S;
+    Algorithm algo = defaultAlgorithm;
 };
 
 /// <summary>

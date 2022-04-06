@@ -25,14 +25,6 @@ Settings::Settings() {
                                version.Minor, version.Build, version.Revision);
 
     AppVersion().Text(vertext);
-
-    using namespace Media;
-
-    ThemeChangeAlertBorder().Background(
-        SolidColorBrush(Theme::get(Theme::Color::AlertBackground)));
-
-    ThemeChangeAlertIcon().Foreground(
-        SolidColorBrush(Theme::get(Theme::Color::AlertForeground)));
 }
 
 fire_and_forget Settings::License_Click(IInspectable const&,
@@ -70,10 +62,9 @@ void Settings::Theme_SelectionChanged(IInspectable const& sender,
 
     settings.Insert(AppSettings::Theme, box_value(selected));
 
-    ThemeChangeAlertBorder().Visibility(selected == AppSettings::CurrentTheme
-                                            ? Visibility::Collapsed
-                                            : Visibility::Visible);
+    ThemeChangeAlert().IsOpen(selected != AppSettings::CurrentTheme);
 }
+
 void Settings::OpenTempFolder_Click(IInspectable const&,
                                     RoutedEventArgs const&) {
     auto folder =
@@ -90,6 +81,13 @@ fire_and_forget Settings::RickRollSwitch_Toggled(IInspectable const&,
             Uri(AppConstants::URLToHeaven));
 
     toggle.IsOn(false);
+}
+
+fire_and_forget Settings::Restart_Click(IInspectable const& sender,
+                                        RoutedEventArgs const& e) {
+    using namespace Windows::ApplicationModel::Core;
+
+    co_await CoreApplication::RequestRestartAsync(L"");
 }
 
 }  // namespace winrt::RTX_2090_TiFy::implementation

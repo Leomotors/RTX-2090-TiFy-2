@@ -10,7 +10,11 @@ std::string removeFileExtension(std::string filename) {
 
     for (; i >= 0; i--) {
         if (filename[i] == '.') {
-            break;
+            if (i > 0 && filename[i - 1] == '.')
+                // something is wrong
+                return filename;
+            else
+                break;
         }
     }
 

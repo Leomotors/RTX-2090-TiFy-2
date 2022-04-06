@@ -6,6 +6,7 @@
 
 #include "AppState.hpp"
 
+#include "GPUConfig.hpp"
 #include "StringHelper.hpp"
 
 using namespace winrt;
@@ -13,7 +14,19 @@ using namespace Windows::UI::Xaml;
 
 namespace winrt::RTX_2090_TiFy::implementation {
 
-HomePage::HomePage() { InitializeComponent(); }
+HomePage::HomePage() {
+    InitializeComponent();
+    
+    for (const auto& [val, name] : RTXLib::AlgoEnumToString) {
+        auto nameh = to_hstring(name);
+        hstringToAlgorithm[nameh] = val;
+        OAlgorithm().Items().Append(box_value(nameh));
+
+        if (val == RTXLib::defaultAlgorithm) {
+            OAlgorithm().SelectedItem(box_value(nameh));
+        }
+    }
+}
 
 fire_and_forget HomePage::SelectInput_Click(IInspectable const& sender,
                                             RoutedEventArgs const& e) {

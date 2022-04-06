@@ -9,10 +9,8 @@ extern std::vector<Windows::UI::Color> Colors;
 
 enum class Color {
     ExternalLink = 0,
-    AlertForeground = 1,
-    AlertBackground = 2,
 };
 
 Windows::UI::Color get(Color key);
 
-}  // namespace winrt::RTX_2090_TiFy
+}  // namespace winrt::RTX_2090_TiFy::Theme
