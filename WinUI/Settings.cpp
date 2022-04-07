@@ -4,8 +4,6 @@
 #include "Settings.g.cpp"
 #endif
 
-#include <format>
-
 #include "AppConstants.hpp"
 #include "AppSettings.hpp"
 #include "ThemeColor.hpp"
@@ -88,7 +86,34 @@ fire_and_forget Settings::Restart_Click(IInspectable const& sender,
                                         RoutedEventArgs const& e) {
     using namespace Windows::ApplicationModel::Core;
 
-    co_await CoreApplication::RequestRestartAsync(L"");
+    auto failure = co_await CoreApplication::RequestRestartAsync({});
+
+    hstring reason;
+
+    switch (failure) {
+        case AppRestartFailureReason::RestartPending:
+            ThemeChangeAlert().ActionButton().Content().as<Button>().Content(
+                box_value(L"Restarting..."));
+            co_return;
+        case AppRestartFailureReason::NotInForeground:
+            reason = L"Not In Foreground";
+            break;
+        case AppRestartFailureReason::InvalidUser:
+            reason = L"Invalid User";
+            break;
+        case AppRestartFailureReason::Other:
+            reason = L"Other";
+            break;
+        default:
+            reason = L"Unexpected Value, you should not see this";
+    }
+
+    ThemeChangeInfoBar().Title(L"Cannot Restart");
+    ThemeChangeInfoBar().Message(
+        std::format(L"Failure Reason: {}, please restart manually", reason));
+    ThemeChangeInfoBar().Severity(
+        Microsoft::UI::Xaml::Controls::InfoBarSeverity::Error);
+    ThemeChangeInfoBar().IsOpen(true);
 }
 
 }  // namespace winrt::RTX_2090_TiFy::implementation

@@ -52,12 +52,18 @@
             <muxc:Expander.Content>
                 <!--  Copied from You are a Failure  -->
                 <StackPanel Padding="30,0">
+                    <StackPanel.Resources>
+                        <Style TargetType="muxc:InfoBar">
+                            <Setter Property="Margin" Value="-4,0,0,0" />
+                        </Style>
+                    </StackPanel.Resources>
+
+                    <muxc:InfoBar x:Name="ThemeChangeInfoBar" />
+
                     <muxc:InfoBar
                         x:Name="ThemeChangeAlert"
                         Title="You need to restart the app to apply the changes"
-                        Margin="-4,0,0,0"
                         IsClosable="False"
-                        IsOpen="False"
                         Severity="Warning">
                         <muxc:InfoBar.ActionButton>
                             <Button
