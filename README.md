@@ -19,4 +19,4 @@ _work in progress_
 
 - Set OpenCV_DIR to OpenCV's Directory
 
-- opencv_world455.dll and opencv_world455d.dll should exists at /WinUI
+- Copy opencv_world455.dll and opencv_world455d.dll to ./WinUI

@@ -245,6 +245,23 @@
                 </ContentDialog>
 
                 <ContentDialog
+                    x:Name="NotRTXReadyDialog"
+                    Title="Not RTX Ready"
+                    Width="0"
+                    Height="0"
+                    CloseButtonText="Okay"
+                    DefaultButton="Close">
+                    <StackPanel>
+                        <Image Margin="0,10" Source="ms-appx:///Assets/RTX/RTXOff.png" />
+                        <TextBlock
+                            x:Name="NotRTXReadyTextBlock"
+                            FontSize="20"
+                            FontWeight="Medium"
+                            TextWrapping="Wrap" />
+                    </StackPanel>
+                </ContentDialog>
+
+                <ContentDialog
                     x:Name="RTXDialog"
                     Width="0"
                     Height="0"

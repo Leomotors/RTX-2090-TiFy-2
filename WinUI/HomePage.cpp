@@ -18,6 +18,8 @@ using namespace Windows::UI::Xaml::Controls;
 
 namespace winrt::RTX_2090_TiFy::implementation {
 
+hstring HomePage::s_inputFileName;
+
 HomePage::HomePage() {
     InitializeComponent();
 
@@ -37,6 +39,16 @@ HomePage::HomePage() {
             OutputAlgorithm().SelectedItem(box_value(nameh));
         }
     }
+}
+
+void HomePage::OnNavigatedTo(Navigation::NavigationEventArgs const&) {
+    if (AppState::ImageHandler.image.empty()) {
+        return;
+    }
+
+    InputImage().Source(Windows::UI::Xaml::Media::Imaging::BitmapImage(
+        Uri(to_hstring(AppState::ImageHandler.path))));
+    OutputFileName().PlaceholderText(s_inputFileName);
 }
 
 void HomePage::saveSettings() {
@@ -81,8 +93,10 @@ fire_and_forget HomePage::SelectInput_Click(IInspectable const& sender,
 
     AppState::ImageHandler.loadImage(to_string(localCopy.Path()));
 
-    OutputFileName().PlaceholderText(to_hstring(
-        RTXLib::StringHelper::removeFileExtension(to_string(file.Name()))));
+    auto phdText = to_hstring(
+        RTXLib::StringHelper::removeFileExtension(to_string(file.Name())));
+    OutputFileName().PlaceholderText(phdText);
+    s_inputFileName = phdText;
 
     InputLoadProgress().Visibility(Visibility::Collapsed);
 }
@@ -137,7 +151,9 @@ fire_and_forget HomePage::Generate_Click(IInspectable const&,
 
     auto failReason = AppState::validate();
     if (failReason.has_value()) {
-        co_await NotRTXReady(to_hstring(failReason.value()));
+        NotRTXReadyTextBlock().Text(L"Failure Reason: " +
+                                    to_hstring(failReason.value()));
+        co_await NotRTXReadyDialog().ShowAsync();
         co_return;
     }
 
@@ -156,8 +172,10 @@ fire_and_forget HomePage::Generate_Click(IInspectable const&,
 
     if (!rayTracing.outVideo.isOpened()) {
         auto dialog = ContentDialog();
-        co_await NotRTXReady(hstring(L"Cannot open Video Writer at ") +
-                             videoPath + L".avi");
+        NotRTXReadyTextBlock().Text(
+            L"Failure Reason: Cannot open Video Writer at " + videoPath +
+            L".avi");
+        co_await NotRTXReadyDialog().ShowAsync();
         co_return;
     }
 
@@ -176,32 +194,6 @@ fire_and_forget HomePage::Generate_Click(IInspectable const&,
     }
 
     co_await prom;
-}
-
-IAsyncAction HomePage::NotRTXReady(const hstring& message) {
-    auto dialog = ContentDialog();
-    dialog.Title(box_value(L"NOT RTX READY"));
-
-    auto stack = StackPanel();
-
-    auto image = Image();
-    image.Source(
-        Media::Imaging::BitmapImage(Uri(L"ms-appx:///Assets/RTX/RTXOff.png")));
-    image.Margin(ThicknessHelper::FromLengths(0, 10, 0, 10));
-
-    auto text = TextBlock();
-    text.Text(L"Reason: " + message);
-    text.FontSize(20);
-    text.FontWeight(Windows::UI::Text::FontWeights::Medium());
-    text.TextWrapping(TextWrapping::Wrap);
-
-    stack.Children().Append(image);
-    stack.Children().Append(text);
-
-    dialog.Content(stack);
-    dialog.DefaultButton(ContentDialogButton::Close);
-    dialog.CloseButtonText(L"Okay");
-    co_await dialog.ShowAsync();
 }
 
 }  // namespace winrt::RTX_2090_TiFy::implementation
