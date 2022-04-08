@@ -72,7 +72,8 @@ TEST_CLASS(ImageHandler) {
         Assert::IsTrue(handler.loadImage(
             "./Assets/StoreLogo.png"),
             L"Returns false when load existing files");
-        Assert::IsFalse(handler.imageGray.empty(), L"ImageGray is empty");
+        Assert::IsFalse(handler.image.empty(), L"ImageGray is empty");
+        Assert::IsTrue(handler.ready(), L"Handler say it is not ready");
     }
 };
 

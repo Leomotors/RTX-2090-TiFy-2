@@ -4,6 +4,6 @@
 
 namespace RTXLib::StringHelper {
 
-std::string removeFileExtension(std::string filename);
+std::string removeFileExtension(const std::string& filename);
 
 }  // namespace RTXLib::StringHelper

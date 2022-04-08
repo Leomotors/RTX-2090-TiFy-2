@@ -21,11 +21,14 @@ class RayTracing {
     cv::VideoWriter outVideo;
 
     RayTracing(const cv::Mat& inputImage, const GPUConfig& gpuConfig);
+    ~RayTracing();
     std::pair<int, int> NextFrame();
 
+    inline int getTotalFrame() const { return m_totalFrame; }
+
   private:
-    int totalFrame;
-    int frameRendered = 0;
+    int m_totalFrame;
+    int m_frameRendered = 0;
 };
 
 }  // namespace RTXLib

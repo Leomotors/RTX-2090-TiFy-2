@@ -10,7 +10,7 @@
 
 namespace RTXLib {
 
-std::optional<std::string> OutputConfig::validate() {
+std::optional<std::string> OutputConfig::validate() const {
     if (path.empty())
 #ifdef _MSC_VER
         return "Output Path is empty, but UWP Version App will take care of "
@@ -34,13 +34,13 @@ std::optional<std::string> OutputConfig::validate() {
 
 GPUConfig::GPUConfig() { resetWarpLocations(); }
 
-bool GPUConfig::setOutputDims(std::pair<int, int> newDims) {
+bool GPUConfig::setOutputDims(const std::pair<int, int>& newDims) {
     output.dims = newDims;
 
     return validateWarpLocations();
 }
 
-bool GPUConfig::setWarpLocations(std::string locations) {
+bool GPUConfig::setWarpLocations(const std::string& locations) {
     std::stringstream ss(locations);
 
     std::string token;
@@ -56,7 +56,8 @@ bool GPUConfig::setWarpLocations(std::string locations) {
     return setWarpLocations(parsedLocs);
 }
 
-bool GPUConfig::setWarpLocations(std::vector<std::pair<int, int>> locations) {
+bool GPUConfig::setWarpLocations(
+    const std::vector<std::pair<int, int>>& locations) {
     warpLocations = locations;
     return validateWarpLocations();
 }
@@ -97,7 +98,7 @@ void GPUConfig::resetWarpLocations() {
     validateWarpLocations();
 }
 
-std::string GPUConfig::warpLocationsAsStr() {
+std::string GPUConfig::warpLocationsAsStr() const {
     std::string res = "";
 
     for (const auto& [x, y] : warpLocations) {

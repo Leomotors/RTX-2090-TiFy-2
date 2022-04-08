@@ -58,7 +58,7 @@ struct OutputConfig {
     /// Validate the configurations
     /// </summary>
     /// <returns>Reason if failed, std::nullopt if pass</returns>
-    std::optional<std::string> validate();
+    std::optional<std::string> validate() const;
 };
 
 /// <summary>
@@ -74,10 +74,10 @@ class GPUConfig {
     OutputConfig output;
     std::vector<std::pair<int, int>> warpLocations;
 
-    bool setOutputDims(std::pair<int, int> newDims);
+    bool setOutputDims(const std::pair<int, int>& newDims);
 
-    bool setWarpLocations(std::string locations);
-    bool setWarpLocations(std::vector<std::pair<int, int>> locations);
+    bool setWarpLocations(const std::string& locations);
+    bool setWarpLocations(const std::vector<std::pair<int, int>>& locations);
     /// <summary>
     /// Remove Invalid Warp Locations based on current dims,
     /// automatically added missing warp locations
@@ -85,7 +85,7 @@ class GPUConfig {
     /// <returns>true if warp locations is changed</returns>
     bool validateWarpLocations();
     void resetWarpLocations();
-    std::string warpLocationsAsStr();
+    std::string warpLocationsAsStr() const;
 };
 
 }  // namespace RTXLib

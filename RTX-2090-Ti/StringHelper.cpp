@@ -5,7 +5,7 @@
 
 namespace RTXLib::StringHelper {
 
-std::string removeFileExtension(std::string filename) {
+std::string removeFileExtension(const std::string& filename) {
     int32_t i = static_cast<int32_t>(filename.size()) - 1;
 
     for (; i >= 0; i--) {

@@ -14,13 +14,12 @@ class ImageHandler {
   public:
     std::string path;
     cv::Mat image;
-    cv::Mat imageGray;
     std::pair<int, int> dims;
 
     bool status = false;
 
-    bool loadImage(std::string filePath);
-    bool ready();
+    bool loadImage(const std::string& filePath);
+    bool ready() const;
 };
 
 }  // namespace RTXLib

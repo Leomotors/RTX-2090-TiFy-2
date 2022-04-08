@@ -8,6 +8,7 @@
 
 #include "GPUConfig.hpp"
 #include "StringHelper.hpp"
+#include "RayTracing.hpp"
 
 #include <format>
 
@@ -136,29 +137,7 @@ fire_and_forget HomePage::Generate_Click(IInspectable const&,
 
     auto failReason = AppState::validate();
     if (failReason.has_value()) {
-        auto dialog = ContentDialog();
-        dialog.Title(box_value(L"NOT RTX READY"));
-
-        auto stack = StackPanel();
-
-        auto image = Image();
-        image.Source(Media::Imaging::BitmapImage(
-            Uri(L"ms-appx:///Assets/RTX/RTXOff.png")));
-        image.Margin(ThicknessHelper::FromLengths(0, 10, 0, 10));
-
-        auto text = TextBlock();
-        text.Text(L"Reason: " + to_hstring(failReason.value()));
-        text.FontSize(20);
-        text.FontWeight(Windows::UI::Text::FontWeights::Medium());
-        text.TextWrapping(TextWrapping::Wrap);
-
-        stack.Children().Append(image);
-        stack.Children().Append(text);
-
-        dialog.Content(stack);
-        dialog.DefaultButton(ContentDialogButton::Close);
-        dialog.CloseButtonText(L"Okay");
-        co_await dialog.ShowAsync();
+        co_await NotRTXReady(to_hstring(failReason.value()));
         co_return;
     }
 
@@ -169,12 +148,59 @@ fire_and_forget HomePage::Generate_Click(IInspectable const&,
     auto videoName = OutputFileName().Text();
     videoName =
         videoName.empty() ? OutputFileName().PlaceholderText() : videoName;
-    auto videoPath = std::format(L"{}\\{}.mp4", outFolder.Path(), videoName);
+    auto videoPath = std::format(L"{}\\{}", outFolder.Path(), videoName);
+    AppState::GPUConfig.output.path = to_string(videoPath);
 
+    auto rayTracing =
+        RTXLib::RayTracing(AppState::ImageHandler.image, AppState::GPUConfig);
+
+    if (!rayTracing.outVideo.isOpened()) {
+        auto dialog = ContentDialog();
+        co_await NotRTXReady(hstring(L"Cannot open Video Writer at ") +
+                             videoPath + L".avi");
+        co_return;
+    }
+
+    auto prom = RTXDialog().ShowAsync();
+
+    while (true) {
+        co_await winrt::resume_background();
+        auto [curr, total] = rayTracing.NextFrame();
+        co_await winrt::resume_foreground(RTXProgressBar().Dispatcher());
+
+        RTXProgressText().Text(
+            std::format(L"Generating... {}/{}", curr, total));
+        RTXProgressBar().Value(100.0 * curr / total);
+
+        if (curr >= total) break;
+    }
+
+    co_await prom;
+}
+
+IAsyncAction HomePage::NotRTXReady(const hstring& message) {
     auto dialog = ContentDialog();
-    dialog.Title(box_value(L"TEST"));
-    dialog.Content(box_value(videoPath));
-    dialog.CloseButtonText(L"TEST");
+    dialog.Title(box_value(L"NOT RTX READY"));
+
+    auto stack = StackPanel();
+
+    auto image = Image();
+    image.Source(
+        Media::Imaging::BitmapImage(Uri(L"ms-appx:///Assets/RTX/RTXOff.png")));
+    image.Margin(ThicknessHelper::FromLengths(0, 10, 0, 10));
+
+    auto text = TextBlock();
+    text.Text(L"Reason: " + message);
+    text.FontSize(20);
+    text.FontWeight(Windows::UI::Text::FontWeights::Medium());
+    text.TextWrapping(TextWrapping::Wrap);
+
+    stack.Children().Append(image);
+    stack.Children().Append(text);
+
+    dialog.Content(stack);
+    dialog.DefaultButton(ContentDialogButton::Close);
+    dialog.CloseButtonText(L"Okay");
     co_await dialog.ShowAsync();
 }
 

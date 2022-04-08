@@ -1,3 +1,5 @@
+#include "pch.h"
+
 #include "RayTracing.hpp"
 
 namespace RTXLib {
@@ -12,9 +14,10 @@ RayTracing::RayTracing(const cv::Mat& inputImage, const GPUConfig& gpuConfig)
     // Prepare output Video Writer
     const auto [x, y] = config.output.dims;
 
-    outVideo = cv::VideoWriter(config.output.path,
-                               cv::VideoWriter::fourcc('X', 'V', 'I', 'D'),
-                               config.output.fps, {x, y});
+    outVideo.open(config.output.path + ".avi",
+                  cv::VideoWriter::fourcc('X', 'V', 'I', 'D'),
+                  config.output.fps, {x, y});
+
     outVideo.write(image);
 
     // Preprocess HSV Data
@@ -33,12 +36,21 @@ RayTracing::RayTracing(const cv::Mat& inputImage, const GPUConfig& gpuConfig)
         (static_cast<double>(imageGray.rows) * imageGray.cols * 255);
 
     // Preprocess misc data
-    totalFrame = config.output.fps * config.output.length * config.output.loops;
+    m_totalFrame =
+        static_cast<int32_t>(config.output.fps * config.output.length) *
+        config.output.loops;
 }
 
+RayTracing::~RayTracing() { outVideo.release(); }
+
 std::pair<int, int> RayTracing::NextFrame() {
-    frameRendered++;
-    return {frameRendered, totalFrame};
+    m_frameRendered++;
+    // todo IMPLEMENT
+    cv::Mat temp;
+    cv::resize(m_frameRendered % 2 ? image : imageGray, temp,
+               {config.output.dims.first, config.output.dims.second});
+    outVideo.write(temp);
+    return {m_frameRendered, m_totalFrame};
 }
 
 }  // namespace RTXLib

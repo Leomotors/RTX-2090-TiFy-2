@@ -6,17 +6,16 @@
 
 namespace RTXLib {
 
-bool ImageHandler::loadImage(std::string filePath) {
+bool ImageHandler::loadImage(const std::string& filePath) {
     cv::Mat inImg = cv::imread(filePath);
     if (inImg.empty()) return false;
 
     path = filePath;
     image = inImg;
-    cv::cvtColor(image, imageGray, cv::COLOR_BGR2GRAY);
     dims = {image.rows, image.cols};
     return true;
 }
 
-bool ImageHandler::ready() { return !image.empty() && !imageGray.empty(); }
+bool ImageHandler::ready() const { return !image.empty(); }
 
 }  // namespace RTXLib

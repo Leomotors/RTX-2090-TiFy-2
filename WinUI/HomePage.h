@@ -33,6 +33,7 @@ struct HomePage : HomePageT<HomePage> {
     void Validate_Click(IInspectable const& sender, RoutedEventArgs const& e);
     fire_and_forget Generate_Click(IInspectable const& sender,
                                    RoutedEventArgs const& e);
+    IAsyncAction NotRTXReady(const hstring& message);
 };
 
 }  // namespace winrt::RTX_2090_TiFy::implementation

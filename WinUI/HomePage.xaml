@@ -69,10 +69,6 @@
                         <Setter Property="Margin" Value="0,3,0,0" />
                         <Setter Property="RelativePanel.AlignRightWithPanel" Value="True" />
                     </Style>
-                    <Style TargetType="ContentDialog">
-                        <Setter Property="Width" Value="0" />
-                        <Setter Property="Height" Value="0" />
-                    </Style>
                 </StackPanel.Resources>
 
                 <TextBlock Style="{StaticResource Header2}">
@@ -185,6 +181,8 @@
 
                 <ContentDialog
                     x:Name="AdvancedSettingsDialog"
+                    Width="0"
+                    Height="0"
                     CloseButtonText="Close"
                     DefaultButton="Primary"
                     PrimaryButtonText="Done">
@@ -246,10 +244,23 @@
 
                 </ContentDialog>
 
-                <ContentDialog x:Name="RTXDialog">
+                <ContentDialog
+                    x:Name="RTXDialog"
+                    Width="0"
+                    Height="0"
+                    CloseButtonText="Close"
+                    DefaultButton="Close">
                     <ContentDialog.Title>
                         RTX ON
                     </ContentDialog.Title>
+
+                    <StackPanel>
+                        <TextBlock x:Name="RTXProgressText" Margin="10">Preprocessing...</TextBlock>
+                        <muxc:ProgressBar
+                            x:Name="RTXProgressBar"
+                            Width="500"
+                            Value="0" />
+                    </StackPanel>
                 </ContentDialog>
 
             </StackPanel>
