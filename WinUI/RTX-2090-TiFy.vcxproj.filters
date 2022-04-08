@@ -6,28 +6,28 @@
       <Filter>gitignored</Filter>
     </ClCompile>
     <ClCompile Include="AppState.cpp">
-      <Filter>src\Classes</Filter>
+      <Filter>src\Backend</Filter>
     </ClCompile>
     <ClCompile Include="AppSettings.cpp">
-      <Filter>src\Classes</Filter>
+      <Filter>src\Backend</Filter>
     </ClCompile>
     <ClCompile Include="ThemeColor.cpp">
-      <Filter>src\Classes</Filter>
+      <Filter>src\Backend</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
     <ClInclude Include="AppState.hpp">
-      <Filter>src\Classes</Filter>
+      <Filter>src\Backend</Filter>
     </ClInclude>
     <ClInclude Include="AppSettings.hpp">
-      <Filter>src\Classes</Filter>
+      <Filter>src\Backend</Filter>
     </ClInclude>
     <ClInclude Include="ThemeColor.hpp">
-      <Filter>src\Classes</Filter>
+      <Filter>src\Backend</Filter>
     </ClInclude>
     <ClInclude Include="AppConstants.hpp">
-      <Filter>src\Classes</Filter>
+      <Filter>src\Backend</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -221,9 +221,6 @@
     <Filter Include="src\Controls">
       <UniqueIdentifier>{c5600c22-651a-4c0c-8e71-26724e404484}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Classes">
-      <UniqueIdentifier>{c7644487-8416-4e62-a352-94a3bfe3f8af}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\Styles">
       <UniqueIdentifier>{9e9c8f50-3ab6-4932-b699-e6a4549521ae}</UniqueIdentifier>
     </Filter>
@@ -232,6 +229,9 @@
     </Filter>
     <Filter Include="Assets\RTX">
       <UniqueIdentifier>{cd39f3ba-974e-417b-a764-2aed3816bac3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Backend">
+      <UniqueIdentifier>{c7644487-8416-4e62-a352-94a3bfe3f8af}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

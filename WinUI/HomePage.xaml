@@ -69,6 +69,10 @@
                         <Setter Property="Margin" Value="0,3,0,0" />
                         <Setter Property="RelativePanel.AlignRightWithPanel" Value="True" />
                     </Style>
+                    <Style TargetType="ContentDialog">
+                        <Setter Property="Width" Value="0" />
+                        <Setter Property="Height" Value="0" />
+                    </Style>
                 </StackPanel.Resources>
 
                 <TextBlock Style="{StaticResource Header2}">
@@ -181,8 +185,6 @@
 
                 <ContentDialog
                     x:Name="AdvancedSettingsDialog"
-                    Width="0"
-                    Height="0"
                     CloseButtonText="Close"
                     DefaultButton="Primary"
                     PrimaryButtonText="Done">
@@ -242,6 +244,12 @@
                         </StackPanel>
                     </ScrollViewer>
 
+                </ContentDialog>
+
+                <ContentDialog x:Name="RTXDialog">
+                    <ContentDialog.Title>
+                        RTX ON
+                    </ContentDialog.Title>
                 </ContentDialog>
 
             </StackPanel>

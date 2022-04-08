@@ -58,7 +58,7 @@ void MainPage::Settings_Click(IInspectable const&, RoutedEventArgs const&) {
 }
 
 void MainPage::NavigationView_SelectionChanged(
-    Microsoft::UI::Xaml::Controls::NavigationView const& sender,
+    Microsoft::UI::Xaml::Controls::NavigationView const&,
     Microsoft::UI::Xaml::Controls::
         NavigationViewSelectionChangedEventArgs const& args) {
     if (args.IsSettingsSelected()) {

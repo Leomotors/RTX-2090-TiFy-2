@@ -16,6 +16,7 @@
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)GPUConfig.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)ImageHandler.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)RayTracing.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)StringHelper.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -23,6 +24,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)ImageHandler.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)IProgressBar.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Macros\opencv.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)RayTracing.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)StringHelper.hpp" />
   </ItemGroup>
 </Project>
