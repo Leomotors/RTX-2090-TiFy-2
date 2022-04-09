@@ -41,16 +41,27 @@ RayTracing::RayTracing(const cv::Mat& inputImage, const GPUConfig& gpuConfig)
         config.output.loops;
 }
 
-RayTracing::~RayTracing() { outVideo.release(); }
+RayTracing::~RayTracing() {
+    outVideo.release();
+    cv::destroyAllWindows();
+}
 
 std::pair<int, int> RayTracing::NextFrame() {
     m_frameRendered++;
-    // todo IMPLEMENT
+    auto temp = buildFrame();
+    outVideo.write(temp);
+    return {m_frameRendered, m_totalFrame};
+}
+
+cv::Mat RayTracing::buildFrame() {
+    // TODO IMPLEMENT
     cv::Mat temp;
     cv::resize(m_frameRendered % 2 ? image : imageGray, temp,
                {config.output.dims.first, config.output.dims.second});
-    outVideo.write(temp);
-    return {m_frameRendered, m_totalFrame};
+    cv::imwrite(config.output.path + std::to_string(m_frameRendered) + ".jpg",
+                temp);
+    cv::imshow("RTX WTF", temp);
+    return temp;
 }
 
 }  // namespace RTXLib

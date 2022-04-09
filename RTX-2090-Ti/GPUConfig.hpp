@@ -42,6 +42,16 @@ const auto OutputConfigConstraint = std::vector<std::string>{
     "Path must not be empty!", "Dimension must ...", "FPS must be at least 1",
     "Length must be at least 1 seconds", "Number of loops must be at least 1"};
 
+/**
+ * Struct containing configuraions related to output
+ *
+ * - std::string path: Output path without extensions
+ * - std::pair<int, int> dims: xy
+ * - int fps
+ * - double length: Length per loop
+ * - int loops
+ * - Algorithm algo
+ */
 struct OutputConfig {
     // Ordered according to ConfigLists & ConfigDescription
     std::string path
@@ -54,19 +64,20 @@ struct OutputConfig {
     double length = 5.5;
     int loops = 6;
     Algorithm algo = Algorithm::BLEND_S;
-    /// <summary>
-    /// Validate the configurations
-    /// </summary>
-    /// <returns>Reason if failed, std::nullopt if pass</returns>
+    /**
+     * Validate the configurations.
+     *
+     * @returns Reason if failed, std::nullopt if pass
+     */
     std::optional<std::string> validate() const;
 };
 
-/// <summary>
-/// Configuration payload for generating video,
-/// does not relate to GPU like its name.
-
-/// reminder: everything here is meme.
-/// </summary>
+/**
+ * Configuration payload for generating video,
+ * does not relate to GPU like its name.
+ *
+ * reminder: everything here is meme.
+ */
 class GPUConfig {
   public:
     GPUConfig();
@@ -78,11 +89,12 @@ class GPUConfig {
 
     bool setWarpLocations(const std::string& locations);
     bool setWarpLocations(const std::vector<std::pair<int, int>>& locations);
-    /// <summary>
-    /// Remove Invalid Warp Locations based on current dims,
-    /// automatically added missing warp locations
-    /// </summary>
-    /// <returns>true if warp locations is changed</returns>
+    /**
+     * Remove Invalid Warp Locations based on current dims, .
+     * automatically added missing warp locations.
+     *
+     * @returns true if warp locations is changed
+     */
     bool validateWarpLocations();
     void resetWarpLocations();
     std::string warpLocationsAsStr() const;

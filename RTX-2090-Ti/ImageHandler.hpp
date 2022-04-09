@@ -7,9 +7,9 @@
 
 namespace RTXLib {
 
-/// <summary>
-/// Handle Input Image and process it before shipping to RTX Factory
-/// </summary>
+/**
+ * Handle Input Image and process it before shipping to RTX Factory.
+ */
 class ImageHandler {
   public:
     std::string path;

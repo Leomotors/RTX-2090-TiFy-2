@@ -9,6 +9,9 @@
 
 namespace RTXLib {
 
+/**
+ * Class that is responsible for generating frames based on configurations.
+ */
 class RayTracing {
   public:
     cv::Mat image;
@@ -23,6 +26,7 @@ class RayTracing {
     RayTracing(const cv::Mat& inputImage, const GPUConfig& gpuConfig);
     ~RayTracing();
     std::pair<int, int> NextFrame();
+    cv::Mat buildFrame();
 
     inline int getTotalFrame() const { return m_totalFrame; }
 
