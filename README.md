@@ -7,8 +7,9 @@ _work in progress_
 
 ## Project Structure
 
-- RTX-2090-Ti -> Core Structure of App
-- RTXTest -> Unit Test App with MSTest
+- RTX-2090-Ti -> Core Structure of App, contains classes and functions
+  that is shared between Windows and Linux Version
+- RTXTest -> Unit Test App with MSTest for shared files (RTX-2090-Ti)
   <br/><br/>
 - WinUI -> UI for Windows with winrt + WinUI2 (because 3 does not have Mica)
 - \<Undecided library\> -> UI for Linux

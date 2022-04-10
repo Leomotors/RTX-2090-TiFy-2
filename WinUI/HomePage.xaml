@@ -265,7 +265,7 @@
                     x:Name="RTXDialog"
                     Width="0"
                     Height="0"
-                    CloseButtonText="Close"
+                    CloseButtonText="Cancel"
                     DefaultButton="Close">
                     <ContentDialog.Title>
                         RTX ON
@@ -282,6 +282,9 @@
 
             </StackPanel>
         </StackPanel>
+
+        <muxc:InfoBar x:Name="BottomInfoBar" />
+
     </StackPanel>
 
 </Page>

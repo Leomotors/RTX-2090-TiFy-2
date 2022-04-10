@@ -37,6 +37,7 @@ struct HomePage : HomePageT<HomePage> {
     void Validate_Click(IInspectable const& sender, RoutedEventArgs const& e);
     fire_and_forget Generate_Click(IInspectable const& sender,
                                    RoutedEventArgs const& e);
+    IAsyncOperation<bool> Generate_Video(const bool& canceled);
 };
 
 }  // namespace winrt::RTX_2090_TiFy::implementation

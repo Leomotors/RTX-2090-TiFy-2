@@ -143,8 +143,6 @@ void HomePage::Validate_Click(IInspectable const&, RoutedEventArgs const&) {
 
 fire_and_forget HomePage::Generate_Click(IInspectable const&,
                                          RoutedEventArgs const&) {
-    using namespace Windows::Storage;
-
     saveSettings();
 
     AppState::GPUConfig.validateWarpLocations();
@@ -156,6 +154,33 @@ fire_and_forget HomePage::Generate_Click(IInspectable const&,
         co_await NotRTXReadyDialog().ShowAsync();
         co_return;
     }
+
+    bool canceled = false;
+    auto generate_promise = Generate_Video(canceled);
+
+    auto dialogResult = co_await RTXDialog().ShowAsync();
+
+    // Either canceled by user or canceled by Generate_Video()
+    if (dialogResult == ContentDialogResult::None) canceled = true;
+
+    // Will be false if canceled earier, true if canceled itself (finished)
+    auto generate_result = co_await generate_promise;
+
+    using Microsoft::UI::Xaml::Controls::InfoBarSeverity;
+
+    if (generate_result) {
+        BottomInfoBar().Title(L"Generate Success");
+        BottomInfoBar().Severity(InfoBarSeverity::Informational);
+    } else {
+        BottomInfoBar().Title(L"Cancelled by User");
+        BottomInfoBar().Severity(InfoBarSeverity::Warning);
+    }
+
+    BottomInfoBar().IsOpen(true);
+}
+
+IAsyncOperation<bool> HomePage::Generate_Video(const bool& canceled) {
+    using namespace Windows::Storage;
 
     auto tmpFolder = ApplicationData::Current().TemporaryFolder();
     auto outFolder = co_await tmpFolder.CreateFolderAsync(
@@ -170,20 +195,25 @@ fire_and_forget HomePage::Generate_Click(IInspectable const&,
     auto rayTracing =
         RTXLib::RayTracing(AppState::ImageHandler.image, AppState::GPUConfig);
 
-    if (!rayTracing.outVideo.isOpened()) {
-        auto dialog = ContentDialog();
-        NotRTXReadyTextBlock().Text(
-            L"Failure Reason: Cannot open Video Writer at " + videoPath +
-            L".avi");
-        co_await NotRTXReadyDialog().ShowAsync();
-        co_return;
-    }
+    using namespace Windows::Media::Editing;
 
-    auto prom = RTXDialog().ShowAsync();
+    auto composition = MediaComposition();
+
+    auto tmpFilePath = videoPath + RTXLib::RayTracing::uwpTempEndingH;
 
     while (true) {
+        if (canceled) {
+            co_return false;
+        }
+
         co_await winrt::resume_background();
-        auto [curr, total] = rayTracing.NextFrame();
+        auto [curr, total] = rayTracing.NextFrameUWP();
+        auto frame = co_await MediaClip::CreateFromImageFileAsync(
+            co_await StorageFile::GetFileFromPathAsync(tmpFilePath),
+            std::chrono::microseconds(static_cast<int64_t>(
+                1000000.0 / AppState::GPUConfig.output.fps)));
+        composition.Clips().Append(frame);
+
         co_await winrt::resume_foreground(RTXProgressBar().Dispatcher());
 
         RTXProgressText().Text(
@@ -193,7 +223,13 @@ fire_and_forget HomePage::Generate_Click(IInspectable const&,
         if (curr >= total) break;
     }
 
-    co_await prom;
+    auto temp_OutputVideo = co_await outFolder.CreateFileAsync(
+        videoName + L".mp4", CreationCollisionOption::ReplaceExisting);
+    co_await composition.RenderToFileAsync(temp_OutputVideo);
+
+    RTXDialog().Hide();
+
+    co_return true;
 }
 
 }  // namespace winrt::RTX_2090_TiFy::implementation

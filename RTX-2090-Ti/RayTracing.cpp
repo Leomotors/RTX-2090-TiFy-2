@@ -4,6 +4,9 @@
 
 namespace RTXLib {
 
+const std::string RayTracing::uwpTempEnding = ".temp.png";
+const std::wstring RayTracing::uwpTempEndingH = L".temp.png";
+
 RayTracing::RayTracing(const cv::Mat& inputImage, const GPUConfig& gpuConfig)
     : config(gpuConfig) {
     // Preprocess Images
@@ -48,20 +51,19 @@ RayTracing::~RayTracing() {
 
 std::pair<int, int> RayTracing::NextFrame() {
     m_frameRendered++;
-    auto temp = buildFrame();
-    outVideo.write(temp);
+    // TODO IMPLEMENT
     return {m_frameRendered, m_totalFrame};
 }
 
-cv::Mat RayTracing::buildFrame() {
-    // TODO IMPLEMENT
+std::pair<int, int> RayTracing::NextFrameUWP() {
+    m_frameRendered++;
+    // TODO PROPER IMPLEMENTATION
     cv::Mat temp;
     cv::resize(m_frameRendered % 2 ? image : imageGray, temp,
                {config.output.dims.first, config.output.dims.second});
-    cv::imwrite(config.output.path + std::to_string(m_frameRendered) + ".jpg",
-                temp);
-    cv::imshow("RTX WTF", temp);
-    return temp;
+    auto path = config.output.path + uwpTempEnding;
+    cv::imwrite(path, temp);
+    return {m_frameRendered, m_totalFrame};
 }
 
 }  // namespace RTXLib
