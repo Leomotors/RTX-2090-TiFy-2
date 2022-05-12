@@ -5,7 +5,6 @@
 #endif
 
 #include "AppState.hpp"
-#include "ThemeColor.hpp"
 
 using namespace winrt;
 using namespace Windows::UI;
@@ -15,9 +14,6 @@ namespace winrt::RTX_2090_TiFy::implementation {
 
 ExternalLink::ExternalLink() {
     InitializeComponent();
-
-    ExtIcon().Foreground(
-        Media::SolidColorBrush(Theme::get(Theme::Color::ExternalLink)));
 }
 
 //--- PROPERTY Text ---//

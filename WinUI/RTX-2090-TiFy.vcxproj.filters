@@ -11,9 +11,6 @@
     <ClCompile Include="AppSettings.cpp">
       <Filter>src\Backend</Filter>
     </ClCompile>
-    <ClCompile Include="ThemeColor.cpp">
-      <Filter>src\Backend</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -21,9 +18,6 @@
       <Filter>src\Backend</Filter>
     </ClInclude>
     <ClInclude Include="AppSettings.hpp">
-      <Filter>src\Backend</Filter>
-    </ClInclude>
-    <ClInclude Include="ThemeColor.hpp">
       <Filter>src\Backend</Filter>
     </ClInclude>
     <ClInclude Include="AppConstants.hpp">
